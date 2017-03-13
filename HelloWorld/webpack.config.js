@@ -1,5 +1,6 @@
 ﻿"use strict";
 
+var webpack = require("webpack");
 module.exports = {
    entry: "./src/app.js",
    output: {
@@ -18,5 +19,10 @@ module.exports = {
             }
          }
       ]
-   }
+   },
+   plugins: [
+      new webpack.ProvidePlugin({
+         "window.jQuery": "jquery"
+      })
+   ]
 };

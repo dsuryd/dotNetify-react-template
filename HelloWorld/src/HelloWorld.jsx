@@ -1,7 +1,5 @@
 ﻿import React from 'react';
-import $ from 'jquery';
-window.jQuery = $;
-var dotnetify = require('dotnetify');
+import dotnetify from 'dotnetify';
 
 class HelloWorld extends React.Component {
    constructor(props) {
