@@ -1,0 +1,12 @@
+[
+  {
+    "outputFile": "wwwroot/Page1.js",
+    "inputFile": "wwwroot/Page1.jsx",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "wwwroot/Page2.js",
+    "inputFile": "wwwroot/Page2.jsx",
+    "sourceMap": false
+  }
+]
