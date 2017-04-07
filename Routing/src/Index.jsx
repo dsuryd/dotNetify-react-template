@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import dotnetify from 'dotnetify';
 import { RouteLink, RouteTarget } from 'dotnetify/dist/dotnetify-react.router'
 
@@ -14,7 +14,6 @@ export default class Index extends React.Component {
       this.vm.$destroy();
    }
    render() {
-      console.log(this.state.Links);
       const links = this.state.Links.map((link, idx) => 
          <MenuItem key={idx}><RouteLink vm={this.vm} route={link.Route}>{link.Title}</RouteLink></MenuItem>
          );
