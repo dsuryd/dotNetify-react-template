@@ -4,7 +4,7 @@ DotNetify makes it super easy to connect your React app to a cross-platform .NET
 #### HelloWorld
 This real-time "Hello World" demo is created with Visual Studio 2017 + WebPack.
 
-### LiveChart
+#### LiveChart
 Real-time chart demo using [ReactiveX](http://reactivex.io/) streams on the back-end.
 
 #### Routing
