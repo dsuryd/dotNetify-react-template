@@ -56,11 +56,11 @@ var Page2 = (function (_React$Component) {
                   Paper,
                   { key: link.Route.Path, style: styles.paper },
                   React.createElement(
-                     MenuItem,
-                     null,
+                     RouteLink,
+                     { vm: _this2.vm, route: link.Route },
                      React.createElement(
-                        RouteLink,
-                        { vm: _this2.vm, route: link.Route },
+                        MenuItem,
+                        null,
                         link.Title
                      )
                   )

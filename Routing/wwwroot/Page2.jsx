@@ -33,9 +33,9 @@
             return (
                links.map(link =>
                   <Paper key={link.Route.Path} style={styles.paper}>
-                     <MenuItem>
-                        <RouteLink vm={this.vm} route={link.Route}>{link.Title}</RouteLink>
-                     </MenuItem>
+                     <RouteLink vm={this.vm} route={link.Route}>
+                        <MenuItem>{link.Title}</MenuItem>
+                     </RouteLink>
                   </Paper>
                )
             );
