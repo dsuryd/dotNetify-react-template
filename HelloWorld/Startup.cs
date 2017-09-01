@@ -19,7 +19,9 @@ namespace HelloWorld
 
       public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
       {
+         app.UseWebpackDevMiddleware();
          app.UseStaticFiles();
+
          app.UseWebSockets();
          app.UseSignalR();
          app.UseDotNetify();

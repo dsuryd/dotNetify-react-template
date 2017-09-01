@@ -3,6 +3,7 @@
   "name": "helloworld",
   "private": true,
    "devDependencies": {
+      "aspnet-webpack": "^2.0.1",
       "babel-core": "^6.23.1",
       "babel-loader": "^6.4.0",
       "babel-preset-react": "^6.23.0",
