@@ -19305,7 +19305,11 @@ var HelloWorld = function (_React$Component) {
       var _this = _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).call(this, props));
 
       _dotnetify2.default.react.connect("HelloWorld", _this);
-      _this.state = { Greetings: "", ServerTime: "" };
+
+      // *** Use below to initialize the user's name from the client. ***
+      // dotnetify.react.connect("HelloWorld", this, { vmArg: { User: { Name: "Joe" } } });
+
+      _this.state = { Greetings: "", ServerTime: "", User: {} };
       return _this;
    }
 
@@ -19317,7 +19321,7 @@ var HelloWorld = function (_React$Component) {
             null,
             this.state.Greetings,
             _react2.default.createElement('br', null),
-            'Server timesdsdds is: ',
+            'Server time is: ',
             this.state.ServerTime
          );
       }

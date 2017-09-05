@@ -6,8 +6,14 @@ namespace HelloWorld
 {
    public class HelloWorld : BaseVM
    {
+      public class Person
+      {
+         public string Name { get; set; }
+      }
+
       private Timer _timer;
-      public string Greetings => "Hello World!";
+      public Person User { get; set; } = new Person() { Name = "World" };
+      public string Greetings => $"Hello {User.Name}!";
       public DateTime ServerTime => DateTime.Now;
 
       public HelloWorld()

@@ -4,9 +4,12 @@ import dotnetify from 'dotnetify';
 class HelloWorld extends React.Component {
    constructor(props) {
       super(props);
-
       dotnetify.react.connect("HelloWorld", this);
-      this.state = { Greetings: "", ServerTime: "" };
+
+      // *** Use below to initialize the user's name from the client. ***
+      // dotnetify.react.connect("HelloWorld", this, { vmArg: { User: { Name: "Joe" } } });
+
+      this.state = { Greetings: "", ServerTime: "", User: {} }
    }
 
    render() {

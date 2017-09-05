@@ -24,7 +24,7 @@ namespace HelloWorld
 
          app.UseWebSockets();
          app.UseSignalR();
-         app.UseDotNetify();
+         app.UseDotNetify(config => config.UseDeveloperLogging());
 
          app.Run(async (context) =>
          {
