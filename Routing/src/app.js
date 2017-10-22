@@ -17,8 +17,5 @@
    Home: require('./Index.jsx').Home
 }
 
-// Used by Material-UI.
-require("react-tap-event-plugin")();
-
 // Export the library modules into global scope for the components that will be loaded on-demand by the router.
 Object.assign(window, module.exports);

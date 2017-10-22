@@ -23,7 +23,7 @@ namespace HelloWorld
          app.UseStaticFiles();
 
          app.UseWebSockets();
-         app.UseSignalR();
+         app.UseSignalR(routes => routes.MapDotNetifyHub());
          app.UseDotNetify(config => config.UseDeveloperLogging());
 
          app.Run(async (context) =>

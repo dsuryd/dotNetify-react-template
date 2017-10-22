@@ -20,7 +20,7 @@ namespace LiveChart
       {
          app.UseStaticFiles();
          app.UseWebSockets();
-         app.UseSignalR();
+         app.UseSignalR(routes => routes.MapDotNetifyHub());
          app.UseDotNetify();
 
          app.Run(async (context) =>
