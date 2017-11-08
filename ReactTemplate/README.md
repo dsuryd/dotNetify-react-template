@@ -1,5 +1,7 @@
 # &nbsp;![alt tag](http://dotnetify.net/content/images/greendot.png) dotNetify-React template
 
+DotNetify is a free, open source project that lets you create real-time, reactive, cross-platform apps with React, React Native, or Knockout front-end on C# .NET back-end via WebSocket.
+
 This is a full React SPA template for ASP.NET Core 2.0 featuring:
 - Real-time dashboard page.
 - Edit form + CRUD table pages.
@@ -22,7 +24,8 @@ dotnet watch run
 ```
 Open http://localhost:5000.
 
+Note: Doesn't run on IE 11 (yet).
 
-### Limitations
+### Credits
 
-Not compatible with IE 11...yet.
+The UI layout was adapted from the [work by @rafaelhz](https://github.com/rafaelhz/react-material-admin-template).  
