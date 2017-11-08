@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>DotNetify.React.Template</id>
+    <version>1.0.1</version>
+    <title>DotNetify React Template</title>
+    <description>
+      DotNetify-React SPA template for .NET Core featuring real-time dashboard.
+    </description>
+    <authors>Dicky Suryadi</authors>
+   <owners>Dicky Suryadi</owners>
+    <licenseUrl>https://github.com/dsuryd/dotNetify/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>http://dotnetify.net/react</projectUrl>    
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+</package>
