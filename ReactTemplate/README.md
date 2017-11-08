@@ -23,3 +23,6 @@ dotnet watch run
 Open http://localhost:5000.
 
 
+### Limitations
+
+Not compatible with IE 11...yet.
