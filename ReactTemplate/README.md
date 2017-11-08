@@ -24,6 +24,8 @@ dotnet watch run
 ```
 Open http://localhost:5000.
 
+![alt screenshot](https://github.com/dsuryd/dotnetify-react-demo-vs2017/blob/master/ReactTemplate/screenshot.gif)
+
 Note: Doesn't run on IE 11 (yet).
 
 ### Credits
