@@ -232,6 +232,9 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
+# Visual Studio Code
+.vscode/
+
 # Visual Studio LightSwitch build output
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts
@@ -250,3 +253,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
