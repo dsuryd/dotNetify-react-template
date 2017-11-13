@@ -6,6 +6,8 @@
 <body>
    <div id="Content"></div>
 
-   <script src="bundle.js"></script>
+   <!-- Polyfill Promise object only if it's missing (for IE 11).-->
+   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+   <script src="bundle.js" charset="UTF-8"></script>
 </body>
 </html>
