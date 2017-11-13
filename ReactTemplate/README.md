@@ -26,7 +26,14 @@ Open http://localhost:5000.
 
 ![alt screenshot](https://github.com/dsuryd/dotnetify-react-demo-vs2017/blob/master/ReactTemplate/screenshot.gif)
 
-Note: Doesn't run on IE 11 (yet).
+### How to make it work with IE 11
+
+Add the following scripts in `index.html`:
+```
+ <!-- Polyfills for IE 11 -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/fetch-polyfill@0.8.2/fetch.min.js"></script>
+```
 
 ### Documentation
 
