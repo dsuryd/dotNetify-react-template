@@ -9,7 +9,7 @@ class HelloWorld extends React.Component {
       // *** Use below to initialize the user's name from the client. ***
       // dotnetify.react.connect("HelloWorld", this, { vmArg: { User: { Name: "Joe" } } });
 
-      this.state = { Greetings: "", ServerTime: "", User: {} }
+      this.state = { Greetings: "", ServerTime: "" }
    }
 
    render() {

@@ -28817,7 +28817,7 @@ var HelloWorld = function (_React$Component) {
       // *** Use below to initialize the user's name from the client. ***
       // dotnetify.react.connect("HelloWorld", this, { vmArg: { User: { Name: "Joe" } } });
 
-      _this.state = { Greetings: "", ServerTime: "", User: {} };
+      _this.state = { Greetings: "", ServerTime: "" };
       return _this;
    }
 
