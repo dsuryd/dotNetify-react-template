@@ -87,7 +87,7 @@ namespace dotnetify_react_template
             liveDataService.Utilization.Subscribe(value => SafeUpdate(() => Utilization = value)),
             liveDataService.RecentActivity.Subscribe(value =>
             {
-               var activities = new Queue<Activity>(RecentActivities ?? new Activity[] { });
+               var activities = new Queue<Activity>(RecentActivities?.Reverse() ?? new Activity[] { });
                activities.Enqueue(new Activity
                {
                   PersonName = value.PersonName,
