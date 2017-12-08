@@ -37,7 +37,7 @@ namespace dotnetify_react_template
          var userIdentity = principalAccessor.Principal.Identity as ClaimsIdentity;
 
          UserName = userIdentity.Name;
-         UserAvatar = userIdentity.Claims.FirstOrDefault(i => i.Type == ClaimTypes.Uri).Value;
+         UserAvatar = userIdentity.Claims.FirstOrDefault(i => i.Type == ClaimTypes.Uri)?.Value;
 
          this.RegisterRoutes("/", new List<RouteTemplate>
             {
