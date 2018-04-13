@@ -6,7 +6,7 @@
 
    <ItemGroup>
       <PackageReference Include="BuildWebCompiler" Version="1.11.370" />
-      <PackageReference Include="DotNetify.SignalR" Version="2.2.2-pre" />
+      <PackageReference Include="DotNetify.SignalR" Version="3.0.0-pre" />
       <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
       <PackageReference Include="Microsoft.AspNetCore" Version="2.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="2.0.0" />
