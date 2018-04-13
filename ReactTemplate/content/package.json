@@ -13,7 +13,7 @@
     "babel-preset-stage-0": "6.24.1",
     "chart.js": "^2.7.1",
     "css-loader": "0.28.7",
-    "dotnetify": "2.0.8-beta",
+    "dotnetify": "3.0.0-pre",
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
     "flexboxgrid": "6.3.1",
