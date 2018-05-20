@@ -1,0 +1,122 @@
+﻿[
+  {
+    "Id": 1,
+    "FirstName": "Clive",
+    "LastName": "Lewis",
+    "ReportTo": 0
+  },
+  {
+    "Id": 2,
+    "FirstName": "Frederick",
+    "LastName": "Buechner",
+    "ReportTo": 1
+  },
+  {
+    "Id": 3,
+    "FirstName": "Priscilla",
+    "LastName": "Shirer",
+    "ReportTo": 1
+  },
+  {
+    "Id": 4,
+    "FirstName": "David",
+    "LastName": "Jeremiah",
+    "ReportTo": 1
+  },
+  {
+    "Id": 5,
+    "FirstName": "Horatio",
+    "LastName": "Spafford",
+    "ReportTo": 2
+  },
+  {
+    "Id": 6,
+    "FirstName": "John",
+    "LastName": "Newton",
+    "ReportTo": 2
+  },
+  {
+    "Id": 7,
+    "FirstName": "Beth",
+    "LastName": "Moore",
+    "ReportTo": 2
+  },
+  {
+    "Id": 8,
+    "FirstName": "Greg",
+    "LastName": "Laurie",
+    "ReportTo": 3
+  },
+  {
+    "Id": 9,
+    "FirstName": "Emmanuel",
+    "LastName": "Espinosa",
+    "ReportTo": 4
+  },
+  {
+    "Id": 10,
+    "FirstName": "Josh",
+    "LastName": "McDowell",
+    "ReportTo": 4
+  },
+  {
+    "Id": 11,
+    "FirstName": "Nabeel",
+    "LastName": "Qureshi",
+    "ReportTo": 8
+  },
+  {
+    "Id": 12,
+    "FirstName": "Francis",
+    "LastName": "Chan",
+    "ReportTo": 8
+  },
+  {
+    "Id": 13,
+    "FirstName": "Lee",
+    "LastName": "Strobel",
+    "ReportTo": 5
+  },
+  {
+    "Id": 14,
+    "FirstName": "Ravi",
+    "LastName": "Zacharias",
+    "ReportTo": 5
+  },
+  {
+    "Id": 15,
+    "FirstName": "Mike",
+    "LastName": "MacIntosh",
+    "ReportTo": 5
+  },
+  {
+    "Id": 16,
+    "FirstName": "Darlene",
+    "LastName": "Zschech",
+    "ReportTo": 12
+  },
+  {
+    "Id": 17,
+    "FirstName": "Miles",
+    "LastName": "McPherson",
+    "ReportTo": 12
+  },
+  {
+    "Id": 18,
+    "FirstName": "Vishal",
+    "LastName": "Mangalwadi",
+    "ReportTo": 10
+  },
+  {
+    "Id": 19,
+    "FirstName": "Luis",
+    "LastName": "Palau",
+    "ReportTo": 10
+  },
+  {
+    "Id": 20,
+    "FirstName": "Stephen",
+    "LastName": "Tong",
+    "ReportTo": 10
+  }
+]
