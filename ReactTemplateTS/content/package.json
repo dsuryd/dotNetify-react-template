@@ -28,5 +28,9 @@
     "url-loader": "0.6.2",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2"
+  },
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   }
 }

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: "./client/app.ts"
+        main: "./client/app.tsx"
     },
     devtool: 'inline-source-map',
     output: {
@@ -14,7 +14,7 @@ module.exports = {
     },
     resolve: {
         modules: ["client", "node_modules"],
-        extensions: ['.js', '.jsx', '.tsx']
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
     module: {
         rules: [

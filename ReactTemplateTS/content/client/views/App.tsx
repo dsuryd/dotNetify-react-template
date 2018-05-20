@@ -9,17 +9,14 @@ type State = {
 type Props = {
   children: any;
 };
-class App extends React.Component<Props, State> {
+export default class App extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = { authenticated: auth.hasAccessToken() };
   }
 
-  render() {
+  render(): JSX.Element {
     const handleAuthenticated = () => this.setState({ authenticated: true });
-
     return !this.state.authenticated ? <LoginPage onAuthenticated={handleAuthenticated} /> : <AppLayout />;
   }
 }
-
-export default App;
