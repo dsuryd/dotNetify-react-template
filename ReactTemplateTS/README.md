@@ -1,6 +1,6 @@
 # &nbsp;![alt tag](http://dotnetify.net/content/images/greendot.png) dotNetify-React template
 
-DotNetify is a [free, open source project](https://github.com/dsuryd/dotNetify) that lets you create real-time, reactive, cross-platform apps with React, React Native, or Knockout front-end on C# .NET back-end via WebSocket.
+DotNetify is a [free, open source project](https://github.com/dsuryd/dotNetify) that lets you create real-time, reactive, cross-platform apps with React, React Native, or Knockout front-end with TypeScript on C# .NET back-end via WebSocket.
 
 This is a full React SPA template for ASP.NET Core 2.0 featuring:
 - Reactive, real-time dashboard page.
@@ -14,9 +14,9 @@ This is a full React SPA template for ASP.NET Core 2.0 featuring:
 ### How to install from NuGet
 
 ```
-dotnet new -i DotNetify.React.Template
+dotnet new -i DotNetify.ReactTypeScript.Template
 
-dotnet new dotnetify -o MyApp
+dotnet new dotnetify-react-ts -o MyApp
 cd MyApp
 npm i
 dotnet build
