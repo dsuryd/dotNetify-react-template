@@ -11,19 +11,6 @@ This is a full React SPA template for ASP.NET Core 2.0 featuring:
 - Webpack hot module replacement + [dotnet watch](https://docs.microsoft.com/en-us/aspnet/core/tutorials/dotnet-watch).
 - [OpenID Connect/OAuth2](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) authentication server.
 
-### How to install from NuGet
-
-```
-dotnet new -i DotNetify.ReactTypeScript.Template
-
-dotnet new dotnetify-react-ts -o MyApp
-cd MyApp
-npm i
-dotnet build
-dotnet watch run
-```
-Open http://localhost:5000.
-
 ![alt screenshot](https://github.com/dsuryd/dotnetify-react-demo-vs2017/blob/master/ReactTemplate/screenshot.gif)
 
 ### How to make it work with IE 11
