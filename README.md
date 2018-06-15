@@ -1,4 +1,4 @@
-<p align="center"><img src="https://s33.postimg.cc/nssom6eov/Logo_do_Netify.png"></p>
+<p align="center"><img width="400px" src="http://dotnetify.net/content/images/dotnetify-logo.png"></p>
 
 ## dotNetify-React Demo
 
