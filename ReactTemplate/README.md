@@ -1,4 +1,6 @@
-# &nbsp;![alt tag](http://dotnetify.net/content/images/greendot.png) dotNetify-React template
+<p align="center"><img width="400px" src="http://dotnetify.net/content/images/dotnetify-logo.png"></p>
+
+## dotNetify-React Template
 
 DotNetify is a [free, open source project](https://github.com/dsuryd/dotNetify) that lets you create real-time, reactive, cross-platform apps with React, React Native, or Knockout front-end on C# .NET back-end via WebSocket.
 

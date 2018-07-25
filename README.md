@@ -1,4 +1,7 @@
-# &nbsp;![alt tag](http://dotnetify.net/content/images/greendot.png) dotNetify-React Demo
+<p align="center"><img width="400px" src="http://dotnetify.net/content/images/dotnetify-logo.png"></p>
+
+## dotNetify-React Demo
+
 DotNetify makes it super easy to connect your React app to a cross-platform .NET back-end and get real-time two-way communication with WebSockets for free!
 
 #### HelloWorld
