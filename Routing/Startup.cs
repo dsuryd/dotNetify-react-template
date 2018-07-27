@@ -36,7 +36,7 @@ namespace Routing
             }
             else
             {
-               // Server-side reandering.
+               // Server-side rendering.
                var path = context.Request.Path.Value;
                path = path == "/" ? "/index" : path;
                var ssrStates = ServerSideRender.GetInitialStates(ref path, typeof(Index));
