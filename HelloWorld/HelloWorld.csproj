@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetify.SignalR" Version="3.0.0-pre" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
   </ItemGroup>
    
    <Target Name="RunWebpack" BeforeTargets="Build" Condition="!Exists('wwwroot\bundle.js') ">
