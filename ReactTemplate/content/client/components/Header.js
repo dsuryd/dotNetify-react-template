@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RouteLink } from 'dotnetify/dist/dotnetify-react.router';
 import AppBar from 'material-ui/AppBar';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import ViewModule from 'material-ui/svg-icons/action/view-module';
 import { white } from 'material-ui/styles/colors';
-import FontIcon from 'material-ui/FontIcon';
 import auth from '../auth';
 
-const Header = (props) => {
-
+const Header = props => {
   const { styles, onSidebarToggle } = props;
 
   const style = {
@@ -40,22 +36,24 @@ const Header = (props) => {
         }
         iconElementRight={
           <div style={style.iconsRightContainer}>
-            <IconMenu color={white}
-              iconButtonElement={<IconButton><MoreVertIcon color={white} /></IconButton>}
+            <IconMenu
+              color={white}
+              iconButtonElement={
+                <IconButton>
+                  <MoreVertIcon color={white} />
+                </IconButton>
+              }
               targetOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
             >
-              <MenuItem
-                primaryText="Sign out"
-                onClick={handleSignout}
-              />
+              <MenuItem primaryText="Sign out" onClick={handleSignout} />
             </IconMenu>
           </div>
         }
       />
     </div>
   );
-}
+};
 
 Header.propTypes = {
   styles: PropTypes.object,

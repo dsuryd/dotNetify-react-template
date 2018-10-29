@@ -50,11 +50,10 @@ namespace dotnetify_react_template
 
          app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
          {
-            HotModuleReplacement = true,
-            ReactHotModuleReplacement = true
+            HotModuleReplacement = true
          });
 
-         app.UseStaticFiles();
+         app.UseFileServer();
 
          app.Run(async (context) =>
          {

@@ -5,8 +5,7 @@ import Paper from 'material-ui/Paper';
 import { white, pink600, pink500, pink400 } from 'material-ui/styles/colors';
 import GlobalStyles from '../../styles/styles';
 
-const ServerUsage = (props) => {
-
+const ServerUsage = props => {
   const styles = {
     paper: {
       backgroundColor: pink600,
@@ -29,7 +28,7 @@ const ServerUsage = (props) => {
     labels: props.label,
     datasets: [
       {
-        data: props.data,        
+        data: props.data,
         backgroundColor: pink400,
         borderColor: pink500
       }
@@ -38,10 +37,10 @@ const ServerUsage = (props) => {
 
   const options = {
     legend: { display: false },
-    scales: { xAxes: [{ ticks: { fontColor: white }, display: true, gridLines: { display: false } }], yAxes: [{ display: false }] },
+    scales: { xAxes: [ { ticks: { fontColor: white }, display: true, gridLines: { display: false } } ], yAxes: [ { display: false } ] },
     layout: { padding: { bottom: 5 } },
     maintainAspectRatio: false
-  }
+  };
 
   return (
     <Paper style={styles.paper}>

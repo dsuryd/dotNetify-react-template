@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dotnetify from 'dotnetify';
 import LoginPage from './LoginPage';
 import AppLayout from './AppLayout';
-import auth from "../auth";
+import auth from '../auth';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -16,8 +14,7 @@ class App extends React.Component {
   render() {
     const handleAuthenticated = _ => this.setState({ authenticated: true });
 
-    return !this.state.authenticated ? 
-      <LoginPage onAuthenticated={handleAuthenticated} /> : <AppLayout />;
+    return !this.state.authenticated ? <LoginPage onAuthenticated={handleAuthenticated} /> : <AppLayout />;
   }
 }
 

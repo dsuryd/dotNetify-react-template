@@ -5,10 +5,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ThemeDefault from '../styles/theme-default';
-import auth from "../auth";
+import auth from '../auth';
 
 class LoginPage extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { user: 'guest', password: 'dotnetify' };
@@ -50,20 +49,16 @@ class LoginPage extends React.Component {
         backgroundColor: 'transparent',
         verticalAlign: 'text-bottom'
       },
-      error: { color: 'red'}
+      error: { color: 'red' }
     };
 
     const handleLogin = _ => {
-      this.setState({error: null});
-      auth.signIn(user, password)
-        .then(_ => onAuthenticated())
-        .catch(error => {
-          if (error.message == "400")
-            this.setState({ error: "Invalid password" });
-          else
-            this.setState({ error: error.message });
-        });
-    }
+      this.setState({ error: null });
+      auth.signIn(user, password).then(_ => onAuthenticated()).catch(error => {
+        if (error.message == '400') this.setState({ error: 'Invalid password' });
+        else this.setState({ error: error.message });
+      });
+    };
 
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
@@ -71,7 +66,7 @@ class LoginPage extends React.Component {
           <div style={styles.loginContainer}>
             <Paper style={styles.paper}>
               <div>
-                <span style={styles.logo}></span>
+                <span style={styles.logo} />
                 <span style={styles.text}>dotNetify</span>
               </div>
               <form>
@@ -80,7 +75,7 @@ class LoginPage extends React.Component {
                   floatingLabelText="User"
                   fullWidth={true}
                   value={user}
-                  onChange={event => this.setState({ user: event.target.value })}                  
+                  onChange={event => this.setState({ user: event.target.value })}
                 />
                 <TextField
                   hintText="Password"
@@ -88,15 +83,12 @@ class LoginPage extends React.Component {
                   fullWidth={true}
                   type="password"
                   value={password}
-                  onChange={event => this.setState({ password: event.target.value })}                  
+                  onChange={event => this.setState({ password: event.target.value })}
                 />
                 {error ? <div style={styles.error}>{error}</div> : null}
                 <div>
                   <span>
-                    <RaisedButton label="Login"
-                      onClick={handleLogin}
-                      primary={true}
-                      style={styles.loginBtn} />
+                    <RaisedButton label="Login" onClick={handleLogin} primary={true} style={styles.loginBtn} />
                   </span>
                 </div>
               </form>

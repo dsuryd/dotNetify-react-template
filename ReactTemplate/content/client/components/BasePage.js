@@ -4,8 +4,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import globalStyles from '../styles/styles';
 
-const BasePage = (props) => {
-  
+const BasePage = props => {
   const { title, navigation } = props;
 
   return (

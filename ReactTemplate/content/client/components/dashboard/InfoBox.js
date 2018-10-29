@@ -5,7 +5,6 @@ import { white, grey800 } from 'material-ui/styles/colors';
 import { typography } from 'material-ui/styles';
 
 class InfoBox extends React.Component {
-
   render() {
     const { color, title, value, Icon } = this.props;
 
@@ -39,7 +38,6 @@ class InfoBox extends React.Component {
         width: 48,
         marginTop: 20,
         maxWidth: '100%'
-
       }
     };
 

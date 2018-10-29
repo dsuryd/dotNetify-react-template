@@ -9,15 +9,14 @@ import ThemeDefault from '../styles/theme-default';
 import auth from '../auth';
 
 class AppLayout extends React.Component {
-
   constructor(props) {
     super(props);
 
-    this.vm = dotnetify.react.connect("AppLayout", this, {
-      headers: { Authorization: "Bearer " + auth.getAccessToken() },
+    this.vm = dotnetify.react.connect('AppLayout', this, {
+      headers: { Authorization: 'Bearer ' + auth.getAccessToken() },
       exceptionHandler: _ => auth.signOut()
     });
-    this.vm.onRouteEnter = (path, template) => template.Target = "Content";
+    this.vm.onRouteEnter = (path, template) => (template.Target = 'Content');
 
     this.state = {
       sidebarOpen: props.width === LARGE,
@@ -53,18 +52,8 @@ class AppLayout extends React.Component {
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
-          <Header
-            styles={styles.header}
-            onSidebarToggle={handleSidebarToggle}
-          />
-          <Sidebar
-            vm={this.vm}
-            logoTitle="dotNetify"
-            open={sidebarOpen}
-            userAvatarUrl={userAvatarUrl}
-            menus={Menus}
-            username={UserName}
-          />
+          <Header styles={styles.header} onSidebarToggle={handleSidebarToggle} />
+          <Sidebar vm={this.vm} logoTitle="dotNetify" open={sidebarOpen} userAvatarUrl={userAvatarUrl} menus={Menus} username={UserName} />
           <div id="Content" style={styles.container} />
         </div>
       </MuiThemeProvider>

@@ -1,9 +1,7 @@
 import React from 'react';
 import dotnetify from 'dotnetify';
-import { RouteLink } from 'dotnetify/dist/dotnetify-react.router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 import TextField from 'material-ui/TextField';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
@@ -16,10 +14,9 @@ import InlineEdit from '../components/table/InlineEdit';
 import ThemeDefault from '../styles/theme-default';
 
 class TablePage extends React.Component {
-
   constructor(props) {
     super(props);
-    this.vm = dotnetify.react.connect("Table", this);
+    this.vm = dotnetify.react.connect('Table', this);
     this.dispatch = state => this.vm.$dispatch(state);
 
     this.state = {
@@ -57,7 +54,7 @@ class TablePage extends React.Component {
     };
 
     const handleUpdate = employee => {
-      let newState = Employees.map(item => item.Id === employee.Id ? Object.assign(item, employee) : item);
+      let newState = Employees.map(item => (item.Id === employee.Id ? Object.assign(item, employee) : item));
       this.setState({ Employees: newState });
       this.dispatch({ Update: employee });
     };
@@ -75,18 +72,18 @@ class TablePage extends React.Component {
         <BasePage title="Table Page" navigation="Application / Table Page">
           <div>
             <div>
-              <FloatingActionButton onClick={handleAdd}
-                style={styles.addButton}
-                backgroundColor={pink500}
-                mini={true}
-              >
+              <FloatingActionButton onClick={handleAdd} style={styles.addButton} backgroundColor={pink500} mini={true}>
                 <ContentAdd />
               </FloatingActionButton>
-              <TextField id="AddName" floatingLabelText="Add" hintText="Type full name here"
+              <TextField
+                id="AddName"
+                floatingLabelText="Add"
+                hintText="Type full name here"
                 floatingLabelFixed={true}
                 value={addName}
-                onKeyPress={event => event.key === "Enter" ? handleAdd() : null}
-                onChange={event => this.setState({ addName: event.target.value })} />
+                onKeyPress={event => (event.key === 'Enter' ? handleAdd() : null)}
+                onChange={event => this.setState({ addName: event.target.value })}
+              />
             </div>
 
             <Table>
@@ -99,7 +96,7 @@ class TablePage extends React.Component {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Employees.map(item =>
+                {Employees.map(item => (
                   <TableRow key={item.Id}>
                     <TableRowColumn style={styles.columns.id}>{item.Id}</TableRowColumn>
                     <TableRowColumn style={styles.columns.firstName}>
@@ -109,7 +106,8 @@ class TablePage extends React.Component {
                       <InlineEdit onChange={value => handleUpdate({ Id: item.Id, LastName: value })}>{item.LastName}</InlineEdit>
                     </TableRowColumn>
                     <TableRowColumn style={styles.columns.remove}>
-                      <FloatingActionButton onClick={_ => this.dispatch({ Remove: item.Id })}
+                      <FloatingActionButton
+                        onClick={_ => this.dispatch({ Remove: item.Id })}
                         zDepth={0}
                         mini={true}
                         backgroundColor={grey200}
@@ -119,22 +117,18 @@ class TablePage extends React.Component {
                       </FloatingActionButton>
                     </TableRowColumn>
                   </TableRow>
-                )}
+                ))}
               </TableBody>
             </Table>
 
-            <Pagination style={styles.pagination}
-              pages={Pages}
-              select={SelectedPage}
-              onSelect={handleSelectPage} />
+            <Pagination style={styles.pagination} pages={Pages} select={SelectedPage} onSelect={handleSelectPage} />
 
-            <Snackbar open={ShowNotification} message="Changes saved" autoHideDuration={1000}
-              onRequestClose={hideNotification} />
+            <Snackbar open={ShowNotification} message="Changes saved" autoHideDuration={1000} onRequestClose={hideNotification} />
           </div>
         </BasePage>
       </MuiThemeProvider>
-    )
-  };
+    );
+  }
 }
 
 export default TablePage;

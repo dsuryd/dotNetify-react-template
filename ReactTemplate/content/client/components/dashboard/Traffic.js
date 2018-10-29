@@ -4,8 +4,7 @@ import { Line } from 'react-chartjs-2';
 import Paper from 'material-ui/Paper';
 import { white, purple600, purple500 } from 'material-ui/styles/colors';
 
-const Traffic = (props) => {
-
+const Traffic = props => {
   const styles = {
     paper: {
       backgroundColor: purple500,
@@ -13,13 +12,13 @@ const Traffic = (props) => {
     },
     div: {
       height: 95,
-      padding: '5px 15px 0 15px',
+      padding: '5px 15px 0 15px'
     },
     header: {
       fontSize: 24,
       color: white,
       backgroundColor: purple600,
-      padding: 10,
+      padding: 10
     }
   };
 
@@ -40,10 +39,10 @@ const Traffic = (props) => {
 
   const options = {
     legend: { display: false },
-    scales: { xAxes: [{ display: false }], yAxes: [{ display: false }] },
+    scales: { xAxes: [ { display: false } ], yAxes: [ { display: false } ] },
     layout: { padding: { left: 5, right: 5, top: 5, bottom: 5 } },
     maintainAspectRatio: false
-  }
+  };
 
   return (
     <Paper style={styles.paper}>

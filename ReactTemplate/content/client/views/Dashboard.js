@@ -16,13 +16,12 @@ import ThemeDefault from '../styles/theme-default';
 import auth from '../auth';
 
 class Dashboard extends React.Component {
-
   constructor(props) {
     super(props);
-    this.vm = dotnetify.react.connect("Dashboard", this, {
+    this.vm = dotnetify.react.connect('Dashboard', this, {
       exceptionHandler: ex => {
-         alert(ex.message);
-         auth.signOut();
+        alert(ex.message);
+        auth.signOut();
       }
     });
     this.dispatch = state => this.vm.$dispatch(state);
@@ -48,38 +47,20 @@ class Dashboard extends React.Component {
           <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
           <div className="row">
-
             <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-              <InfoBox Icon={DownloadIcon}
-                color={pink600}
-                title="Download"
-                value={this.state.Download}
-              />
-            </div>
-
-
-            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-              <InfoBox Icon={UploadIcon}
-                color={cyan600}
-                title="Upload"
-                value={this.state.Upload}
-              />
+              <InfoBox Icon={DownloadIcon} color={pink600} title="Download" value={this.state.Download} />
             </div>
 
             <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-              <InfoBox Icon={LatencyIcon}
-                color={purple600}
-                title="Latency"
-                value={this.state.Latency}
-              />
+              <InfoBox Icon={UploadIcon} color={cyan600} title="Upload" value={this.state.Upload} />
             </div>
 
             <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-              <InfoBox Icon={UserIcon}
-                color={orange600}
-                title="Users"
-                value={this.state.Users}
-              />
+              <InfoBox Icon={LatencyIcon} color={purple600} title="Latency" value={this.state.Latency} />
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+              <InfoBox Icon={UserIcon} color={orange600} title="Users" value={this.state.Users} />
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RouteLink } from 'dotnetify/dist/dotnetify-react.router';
+import { RouteLink } from 'dotnetify';
 import Avatar from 'material-ui/Avatar';
 import Drawer from 'material-ui/Drawer';
 import FontIcon from 'material-ui/FontIcon';
@@ -8,8 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { spacing, typography } from 'material-ui/styles';
 import { white, blue600 } from 'material-ui/styles/colors';
 
-const Sidebar = (props) => {
-
+const Sidebar = props => {
   let { vm, logoTitle, open, userAvatarUrl, menus } = props;
 
   const styles = {
@@ -21,7 +20,7 @@ const Sidebar = (props) => {
       fontWeight: typography.fontWeightLight,
       backgroundColor: blue600,
       paddingLeft: 70,
-      height: 56,
+      height: 56
     },
     menuItem: {
       color: white,
@@ -57,7 +56,7 @@ const Sidebar = (props) => {
         <span style={styles.avatar.span}>{props.username}</span>
       </div>
       <div>
-        {menus.map((menu, index) =>
+        {menus.map((menu, index) => (
           <MenuItem
             key={index}
             style={styles.menuItem}
@@ -65,7 +64,7 @@ const Sidebar = (props) => {
             leftIcon={<FontIcon className="material-icons">{menu.Icon}</FontIcon>}
             containerElement={<RouteLink vm={vm} route={menu.Route} />}
           />
-        )}
+        ))}
       </div>
     </Drawer>
   );

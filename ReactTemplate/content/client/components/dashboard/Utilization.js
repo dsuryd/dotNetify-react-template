@@ -11,8 +11,7 @@ import NetworkIcon from 'material-ui/svg-icons/device/network-wifi';
 import { cyan600, pink600, purple600 } from 'material-ui/styles/colors';
 import GlobalStyles from '../../styles/styles';
 
-const Utilization = (props) => {
-
+const Utilization = props => {
   const styles = {
     paper: {
       minHeight: 344,
@@ -30,18 +29,16 @@ const Utilization = (props) => {
     }
   };
 
-  const labelStyles = [
-    { color: cyan600, icon: <MemoryIcon /> },
-    { color: pink600, icon: <DiskIcon /> },
-    { color: purple600, icon: <NetworkIcon /> }
-  ]
+  const labelStyles = [ { color: cyan600, icon: <MemoryIcon /> }, { color: pink600, icon: <DiskIcon /> }, { color: purple600, icon: <NetworkIcon /> } ];
 
   const data = {
     labels: props.label,
-    datasets: [{
-      data: props.data,
-      backgroundColor: [cyan600, pink600, purple600]
-    }]
+    datasets: [
+      {
+        data: props.data,
+        backgroundColor: [ cyan600, pink600, purple600 ]
+      }
+    ]
   };
 
   const options = {
@@ -60,20 +57,15 @@ const Utilization = (props) => {
           </div>
         </div>
         <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div style={styles.legend}>
-              <List>
-                {props.label.map((item, idx) =>
-                  <ListItem
-                    key={item}
-                    leftAvatar={
-                      <Avatar icon={labelStyles[idx].icon}
-                        backgroundColor={labelStyles[idx].color} />
-                    }>
-                    <span style={styles.legendText}>{item}</span>
-                  </ListItem>
-                )}
-              </List>
-            </div>
+          <div style={styles.legend}>
+            <List>
+              {props.label.map((item, idx) => (
+                <ListItem key={item} leftAvatar={<Avatar icon={labelStyles[idx].icon} backgroundColor={labelStyles[idx].color} />}>
+                  <span style={styles.legendText}>{item}</span>
+                </ListItem>
+              ))}
+            </List>
+          </div>
         </div>
       </div>
     </Paper>

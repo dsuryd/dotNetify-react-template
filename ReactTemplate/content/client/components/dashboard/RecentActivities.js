@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteLink } from 'dotnetify/dist/dotnetify-react.router';
 import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
 import { List, ListItem } from 'material-ui/List';
@@ -14,8 +13,7 @@ import { grey400, cyan600, white } from 'material-ui/styles/colors';
 import { typography } from 'material-ui/styles';
 import Wallpaper from 'material-ui/svg-icons/device/wallpaper';
 
-const RecentActivities = (props) => {
-
+const RecentActivities = props => {
   const styles = {
     subheader: {
       fontSize: 24,
@@ -26,10 +24,7 @@ const RecentActivities = (props) => {
   };
 
   const iconButtonElement = (
-    <IconButton
-      touch={true}
-      tooltipPosition="bottom-left"
-    >
+    <IconButton touch={true} tooltipPosition="bottom-left">
       <MoreVertIcon color={grey400} />
     </IconButton>
   );
@@ -40,7 +35,7 @@ const RecentActivities = (props) => {
     <Paper>
       <List>
         <Subheader style={styles.subheader}>Recent Activities</Subheader>
-        {props.data.map((item, idx) =>
+        {props.data.map((item, idx) => (
           <div key={idx}>
             <ListItem
               leftAvatar={<Avatar icon={<Wallpaper />} />}
@@ -54,7 +49,7 @@ const RecentActivities = (props) => {
             />
             <Divider inset={true} />
           </div>
-        )}
+        ))}
       </List>
     </Paper>
   );
