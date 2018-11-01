@@ -1,8 +1,5 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import LiveChart from 'LiveChart.jsx';
+import LiveChart from './LiveChart.jsx';
 
-ReactDOM.render(
-   <LiveChart />,
-   document.getElementById('Content')
-);
+ReactDOM.render(<LiveChart />, document.getElementById('Content'));
