@@ -6,10 +6,10 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DotNetify.SignalR" Version="3.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
+    <PackageReference Include="DotNetify.SignalR" Version="3.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
     <PackageReference Include="System.Reactive" Version="3.1.1" />
-    <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0-rc1-final" />    
+    <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0" />    
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="server\Services\employees.json" />

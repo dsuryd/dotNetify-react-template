@@ -12,14 +12,13 @@
       "react"
     ],
     "plugins": [
-      "babel-plugin-styled-components",
       "babel-plugin-transform-object-rest-spread",
       "babel-plugin-transform-class-properties"
     ]
   },
   "dependencies": {
     "chart.js": "~2.7.1",
-    "dotnetify": "~3.2.0",
+    "dotnetify": "^3.4.0",
     "flexboxgrid": "~6.3.1",
     "material-ui": "~0.19.4",
     "react": "~16.3.2",
@@ -31,7 +30,6 @@
     "awesome-typescript-loader": "~5.1.0",
     "babel-core": "~6.26.3",
     "babel-loader": "~7.1.4",
-    "babel-plugin-styled-components": "^1.7.1",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-plugin-transform-object-rest-spread": "~6.26.0",
     "babel-preset-env": "~1.7.0",
