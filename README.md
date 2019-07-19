@@ -11,7 +11,7 @@ This real-time "Hello World" demo is created with Visual Studio 2017 + WebPack.
 Real-time chart demo using [ReactiveX](http://reactivex.io/) streams on the back-end.
 
 #### ReactTemplate
-Full SPA template for .NET Core 2.0 featuring real-time dashboard, OpenID Connect/OAuth2 authentication, and more!
+Full SPA template for .NET Core 2.x featuring real-time dashboard, OpenID Connect/OAuth2 authentication, and more!
 
 #### Routing
 Isomorphic/universal routing demo, capable of both client-side and server-side rendering of deep-links.
