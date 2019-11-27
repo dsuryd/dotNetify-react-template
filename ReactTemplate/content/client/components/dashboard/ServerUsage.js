@@ -1,59 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
-import Paper from 'material-ui/Paper';
-import { white, pink600, pink500, pink400 } from 'material-ui/styles/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import pink from '@material-ui/core/colors/pink';
 import GlobalStyles from '../../styles/styles';
 
-const ServerUsage = props => {
-  const styles = {
-    paper: {
-      backgroundColor: pink600,
-      height: 150
-    },
-    div: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '95%',
-      height: 85
-    },
-    header: {
-      color: white,
-      backgroundColor: pink500,
-      padding: 10
-    }
-  };
+const useStyles = makeStyles({
+  paper: {
+    backgroundColor: pink[600],
+    height: 150
+  },
+  div: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '95%',
+    height: 85
+  },
+  header: {
+    color: '#fff',
+    backgroundColor: pink[500],
+    padding: 10
+  }
+});
 
+const chartOptions = {
+  legend: { display: false },
+  tooltips: { enabled: false },
+  scales: {
+    xAxes: [ { ticks: { fontColor: '#fff' }, display: true, gridLines: { display: false } } ],
+    yAxes: [ { display: false } ]
+  },
+  layout: { padding: { bottom: 5 } },
+  maintainAspectRatio: false
+};
+
+export default function ServerUsage(props) {
+  const classes = useStyles();
   const data = {
     labels: props.label,
     datasets: [
       {
         data: props.data,
-        backgroundColor: pink400,
-        borderColor: pink500
+        backgroundColor: pink[400],
+        borderColor: pink[500]
       }
     ]
   };
 
-  const options = {
-    legend: { display: false },
-    scales: { xAxes: [ { ticks: { fontColor: white }, display: true, gridLines: { display: false } } ], yAxes: [ { display: false } ] },
-    layout: { padding: { bottom: 5 } },
-    maintainAspectRatio: false
-  };
-
   return (
-    <Paper style={styles.paper}>
-      <div style={{ ...GlobalStyles.title, ...styles.header }}>Server Usage</div>
-      <div style={styles.div}>
-        <Bar data={data} options={options} />
+    <Card className={classes.paper}>
+      <div className={classes.header} style={{ ...GlobalStyles.title }}>
+        Server Usage
       </div>
-    </Paper>
+      <div className={classes.div}>
+        <Bar data={data} options={chartOptions} />
+      </div>
+    </Card>
   );
-};
+}
 
 ServerUsage.propTypes = {
   data: PropTypes.array
 };
-
-export default ServerUsage;

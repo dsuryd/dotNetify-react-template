@@ -17,3 +17,23 @@ const themeDefault = getMuiTheme({
 });
 
 export default themeDefault;
+
+// import { blue, grey } from '@material-ui/core/colors';
+// import { createMuiTheme } from '@material-ui/core/styles';
+
+// const themeDefault = createMuiTheme({
+//   palette: {},
+//   appBar: {
+//     height: 57,
+//     color: blue[600]
+//   },
+//   drawer: {
+//     width: 230,
+//     color: grey[900]
+//   },
+//   raisedButton: {
+//     primaryColor: blue[600]
+//   }
+// });
+
+// export default themeDefault;

@@ -1,79 +1,91 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
-import Paper from 'material-ui/Paper';
-import Avatar from 'material-ui/Avatar';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
-import MemoryIcon from 'material-ui/svg-icons/hardware/memory';
-import DiskIcon from 'material-ui/svg-icons/hardware/sim-card';
-import NetworkIcon from 'material-ui/svg-icons/device/network-wifi';
-import { cyan600, pink600, purple600 } from 'material-ui/styles/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import { Memory, SimCard, NetworkWifi } from '@material-ui/icons';
+import cyan from '@material-ui/core/colors/cyan';
+import pink from '@material-ui/core/colors/pink';
+import purple from '@material-ui/core/colors/purple';
 import GlobalStyles from '../../styles/styles';
 
-const Utilization = props => {
-  const styles = {
-    paper: {
-      minHeight: 344,
-      padding: 10
-    },
-    legend: {
-      paddingTop: 60
-    },
-    legendText: {
-      fontSize: '12px'
-    },
-    pieChartDiv: {
-      height: 290,
-      textAlign: 'center'
-    }
-  };
+const useStyles = makeStyles({
+  paper: {
+    minHeight: 344,
+    padding: 10
+  },
+  legend: {
+    paddingTop: 60
+  },
+  legendText: {
+    fontSize: '12px'
+  },
+  pieChartDiv: {
+    height: 290,
+    textAlign: 'center'
+  }
+});
 
-  const labelStyles = [ { color: cyan600, icon: <MemoryIcon /> }, { color: pink600, icon: <DiskIcon /> }, { color: purple600, icon: <NetworkIcon /> } ];
+const labelStyles = [
+  { color: cyan[600], icon: <Memory /> },
+  { color: pink[600], icon: <SimCard /> },
+  { color: purple[600], icon: <NetworkWifi /> }
+];
+
+const chartOptions = {
+  legend: { display: false },
+  layout: { padding: { left: 0, right: 10, top: 20, bottom: 10 } },
+  maintainAspectRatio: false
+};
+
+export default function Utilization(props) {
+  const classes = useStyles();
 
   const data = {
     labels: props.label,
     datasets: [
       {
         data: props.data,
-        backgroundColor: [ cyan600, pink600, purple600 ]
+        backgroundColor: [ cyan[600], pink[600], purple[600] ]
       }
     ]
   };
 
-  const options = {
-    legend: { display: false },
-    layout: { padding: { left: 0, right: 10, top: 20, bottom: 10 } },
-    maintainAspectRatio: false
-  };
-
   return (
-    <Paper style={styles.paper}>
+    <Card className={classes.paper}>
       <span style={GlobalStyles.title}>Utilization</span>
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-          <div style={styles.pieChartDiv}>
-            <Doughnut data={data} options={options} />
+          <div className={classes.pieChartDiv}>
+            <Doughnut data={data} options={chartOptions} />
           </div>
         </div>
         <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <div style={styles.legend}>
+          <div className={classes.legend}>
             <List>
               {props.label.map((item, idx) => (
-                <ListItem key={item} leftAvatar={<Avatar icon={labelStyles[idx].icon} backgroundColor={labelStyles[idx].color} />}>
-                  <span style={styles.legendText}>{item}</span>
+                <ListItem key={item} alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar style={{ backgroundColor: labelStyles[idx].color }}>{labelStyles[idx].icon}</Avatar>
+                  </ListItemAvatar>
+                  <ListItemText>
+                    <span className={classes.legendText}>{item}</span>
+                  </ListItemText>
                 </ListItem>
               ))}
             </List>
           </div>
         </div>
       </div>
-    </Paper>
+    </Card>
   );
-};
+}
 
 Utilization.propTypes = {
   data: PropTypes.array
 };
-
-export default Utilization;

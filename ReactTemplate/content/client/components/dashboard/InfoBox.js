@@ -1,59 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import { white, grey800 } from 'material-ui/styles/colors';
-import { typography } from 'material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
 
-class InfoBox extends React.Component {
-  render() {
-    const { color, title, value, Icon } = this.props;
-
-    const styles = {
-      content: {
-        padding: '5px 10px',
-        marginLeft: 90,
-        height: 80
-      },
-      number: {
-        display: 'block',
-        fontWeight: 'bold',
-        fontSize: 18,
-        paddingTop: 10,
-        color: grey800
-      },
-      text: {
-        fontSize: 18,
-        fontWeight: typography.fontWeightLight,
-        color: grey800
-      },
-      iconSpan: {
-        float: 'left',
-        height: 90,
-        width: 90,
-        textAlign: 'center',
-        backgroundColor: color
-      },
-      icon: {
-        height: 48,
-        width: 48,
-        marginTop: 20,
-        maxWidth: '100%'
-      }
-    };
-
-    return (
-      <Paper>
-        <span style={styles.iconSpan}>
-          <Icon color={white} style={styles.icon} />
-        </span>
-
-        <div style={styles.content}>
-          <span style={styles.text}>{title}</span>
-          <span style={styles.number}>{value}</span>
-        </div>
-      </Paper>
-    );
+const useStyles = makeStyles({
+  content: {
+    padding: '5px 10px',
+    marginLeft: 90,
+    height: 80
+  },
+  number: {
+    display: 'block',
+    fontWeight: 'bold',
+    fontSize: 18,
+    paddingTop: 10,
+    color: '#333'
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'lighter',
+    color: '#666'
+  },
+  iconSpan: {
+    float: 'left',
+    height: 90,
+    width: 90,
+    textAlign: 'center',
+    backgroundColor: props => props.color
+  },
+  icon: {
+    color: '#fff',
+    height: 48,
+    width: 48,
+    marginTop: 20,
+    maxWidth: '100%'
   }
+});
+
+export default function InfoBox({ title, value, Icon, ...props }) {
+  const classes = useStyles(props);
+  return (
+    <Card>
+      <span className={classes.iconSpan}>
+        <Icon className={classes.icon} />
+      </span>
+
+      <div className={classes.content}>
+        <span className={classes.text}>{title}</span>
+        <span className={classes.number}>{value}</span>
+      </div>
+    </Card>
+  );
 }
 
 InfoBox.propTypes = {
@@ -62,5 +59,3 @@ InfoBox.propTypes = {
   title: PropTypes.string,
   value: PropTypes.any
 };
-
-export default InfoBox;

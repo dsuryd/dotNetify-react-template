@@ -1,62 +1,74 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
-import { List, ListItem } from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import { grey400, cyan600, white } from 'material-ui/styles/colors';
-import { typography } from 'material-ui/styles';
-import Wallpaper from 'material-ui/svg-icons/device/wallpaper';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import cyan from '@material-ui/core/colors/cyan';
+import { Wallpaper } from '@material-ui/icons';
 
-const RecentActivities = props => {
-  const styles = {
-    subheader: {
-      fontSize: 24,
-      fontWeight: typography.fontWeightLight,
-      backgroundColor: cyan600,
-      color: white
-    }
-  };
+const useStyles = makeStyles({
+  subheader: {
+    fontSize: 24,
+    fontWeight: 'lighter',
+    backgroundColor: cyan[600],
+    color: '#fff'
+  }
+});
 
-  const iconButtonElement = (
-    <IconButton touch={true} tooltipPosition="bottom-left">
-      <MoreVertIcon color={grey400} />
-    </IconButton>
-  );
+export default function RecentActivities(props) {
+  const [ anchorEl, setAnchorEl ] = React.useState(null);
+  const open = !!anchorEl;
+
+  const classes = useStyles();
+
+  const handleIconClick = event => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
 
   const handleMenuClick = route => props.vm.$routeTo(route);
 
   return (
-    <Paper>
+    <Card>
       <List>
-        <Subheader style={styles.subheader}>Recent Activities</Subheader>
+        <ListSubheader className={classes.subheader}>Recent Activities</ListSubheader>
         {props.data.map((item, idx) => (
-          <div key={idx}>
-            <ListItem
-              leftAvatar={<Avatar icon={<Wallpaper />} />}
-              primaryText={item.PersonName}
-              secondaryText={item.Status}
-              rightIconButton={
-                <IconMenu iconButtonElement={iconButtonElement}>
-                  <MenuItem onClick={_ => handleMenuClick(item.Route)}>View</MenuItem>
-                </IconMenu>
-              }
-            />
-            <Divider inset={true} />
-          </div>
+          <React.Fragment key={idx}>
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar>
+                  <Wallpaper />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={item.PersonName} secondary={item.Status} />
+              <ListItemSecondaryAction>
+                <div>
+                  <IconButton onClick={handleIconClick}>
+                    <MoreVertIcon />
+                  </IconButton>
+                  <Menu anchorEl={anchorEl} open={open} onClose={handleMenuClose}>
+                    <MenuItem onClick={_ => handleMenuClick(item.Route)}>View</MenuItem>
+                  </Menu>
+                </div>
+              </ListItemSecondaryAction>
+            </ListItem>
+            <Divider inset="true" />
+          </React.Fragment>
         ))}
       </List>
-    </Paper>
+    </Card>
   );
-};
+}
 
 RecentActivities.propTypes = {
   data: PropTypes.array
 };
-
-export default RecentActivities;

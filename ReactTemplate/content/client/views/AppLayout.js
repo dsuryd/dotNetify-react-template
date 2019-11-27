@@ -53,7 +53,14 @@ class AppLayout extends React.Component {
       <MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
           <Header styles={styles.header} onSidebarToggle={handleSidebarToggle} />
-          <Sidebar vm={this.vm} logoTitle="dotNetify" open={sidebarOpen} userAvatarUrl={userAvatarUrl} menus={Menus} username={UserName} />
+          <Sidebar
+            vm={this.vm}
+            logoTitle="dotNetify"
+            open={sidebarOpen}
+            userAvatarUrl={userAvatarUrl}
+            menus={Menus}
+            username={UserName}
+          />
           <div id="Content" style={styles.container} />
         </div>
       </MuiThemeProvider>

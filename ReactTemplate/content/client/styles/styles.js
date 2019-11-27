@@ -1,17 +1,14 @@
-import { typography } from 'material-ui/styles';
-import { grey600 } from 'material-ui/styles/colors';
-
 const styles = {
   navigation: {
     fontSize: 15,
-    fontWeight: typography.fontWeightLight,
-    color: grey600,
+    fontWeight: 'lighter',
+    color: '#777',
     paddingBottom: 15,
     display: 'block'
   },
   title: {
     fontSize: 24,
-    fontWeight: typography.fontWeightLight,
+    fontWeight: 'lighter',
     marginBottom: 20
   },
   paper: {
