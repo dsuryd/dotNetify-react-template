@@ -4,23 +4,23 @@ import { Bar } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import pink from '@material-ui/core/colors/pink';
-import GlobalStyles from '../../styles/styles';
+import globalStyles from '../../styles/styles';
 
 const useStyles = makeStyles({
-  paper: {
+  card: {
     backgroundColor: pink[600],
     height: 150
   },
-  div: {
+  header: {
+    color: 'white',
+    backgroundColor: pink[500],
+    padding: 10
+  },
+  body: {
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '95%',
     height: 85
-  },
-  header: {
-    color: '#fff',
-    backgroundColor: pink[500],
-    padding: 10
   }
 });
 
@@ -28,7 +28,7 @@ const chartOptions = {
   legend: { display: false },
   tooltips: { enabled: false },
   scales: {
-    xAxes: [ { ticks: { fontColor: '#fff' }, display: true, gridLines: { display: false } } ],
+    xAxes: [ { ticks: { fontcolor: 'white' }, display: true, gridLines: { display: false } } ],
     yAxes: [ { display: false } ]
   },
   layout: { padding: { bottom: 5 } },
@@ -49,11 +49,11 @@ export default function ServerUsage(props) {
   };
 
   return (
-    <Card className={classes.paper}>
-      <div className={classes.header} style={{ ...GlobalStyles.title }}>
+    <Card className={classes.card}>
+      <div className={classes.header} style={{ ...globalStyles.title }}>
         Server Usage
       </div>
-      <div className={classes.div}>
+      <div className={classes.body}>
         <Bar data={data} options={chartOptions} />
       </div>
     </Card>

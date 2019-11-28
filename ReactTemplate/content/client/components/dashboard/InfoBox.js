@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import grey from '@material-ui/core/colors/grey';
 
 const useStyles = makeStyles({
   content: {
@@ -14,22 +15,22 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     fontSize: 18,
     paddingTop: 10,
-    color: '#333'
+    color: grey[800]
   },
   text: {
     fontSize: 18,
     fontWeight: 'lighter',
-    color: '#666'
+    color: grey[600]
   },
-  iconSpan: {
+  iconBox: {
     float: 'left',
     height: 90,
     width: 90,
     textAlign: 'center',
+    color: 'white',
     backgroundColor: props => props.color
   },
   icon: {
-    color: '#fff',
     height: 48,
     width: 48,
     marginTop: 20,
@@ -39,9 +40,10 @@ const useStyles = makeStyles({
 
 export default function InfoBox({ title, value, Icon, ...props }) {
   const classes = useStyles(props);
+
   return (
     <Card>
-      <span className={classes.iconSpan}>
+      <span className={classes.iconBox}>
         <Icon className={classes.icon} />
       </span>
 

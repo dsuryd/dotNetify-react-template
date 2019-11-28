@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MenuIcon from '@material-ui/icons/Menu';
+import blue from '@material-ui/core/colors/blue';
 import auth from '../auth';
-import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
@@ -15,13 +17,16 @@ const useStyles = makeStyles({
   },
   appBar: {
     backgroundColor: blue[600],
+    overflow: 'hidden',
     position: 'fixed',
     top: 0,
-    overflow: 'hidden',
     maxHeight: 56
   },
   menuButton: {
     marginLeft: -24
+  },
+  morebutton: {
+    color: 'white'
   },
   title: {
     flexGrow: 1
@@ -29,20 +34,30 @@ const useStyles = makeStyles({
 });
 
 export default function Header(props) {
-  const classes = useStyles();
+  const [ anchorEl, setAnchorEl ] = React.useState(null);
   const { styles, onSidebarToggle } = props;
+  const classes = useStyles();
+
+  const handleIconClick = event => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
+  const handleMenuClick = () => auth.signOut();
 
   return (
     <div className={classes.root}>
       <AppBar style={styles} className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={onSidebarToggle}>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={onSidebarToggle}>
             <MenuIcon />
           </IconButton>
           <h5 className={classes.title} />
-          <Button edge="end" color="inherit" onClick={_ => auth.logout()}>
-            Logout
-          </Button>
+          <div>
+            <IconButton onClick={handleIconClick} color="inherit">
+              <MoreVertIcon />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={handleMenuClose}>
+              <MenuItem onClick={handleMenuClick}>Logout</MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

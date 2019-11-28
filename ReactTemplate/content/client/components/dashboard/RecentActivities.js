@@ -14,39 +14,37 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import WallpaperIcon from '@material-ui/icons/Wallpaper';
 import cyan from '@material-ui/core/colors/cyan';
-import { Wallpaper } from '@material-ui/icons';
 
 const useStyles = makeStyles({
-  subheader: {
+  header: {
     fontSize: 24,
     fontWeight: 'lighter',
-    backgroundColor: cyan[600],
-    color: '#fff'
+    padding: 10,
+    color: 'white',
+    backgroundColor: cyan[600]
   }
 });
 
 export default function RecentActivities(props) {
   const [ anchorEl, setAnchorEl ] = React.useState(null);
-  const open = !!anchorEl;
-
   const classes = useStyles();
 
   const handleIconClick = event => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
-
   const handleMenuClick = route => props.vm.$routeTo(route);
 
   return (
     <Card>
+      <div className={classes.header}>Recent Activities</div>
       <List>
-        <ListSubheader className={classes.subheader}>Recent Activities</ListSubheader>
         {props.data.map((item, idx) => (
           <React.Fragment key={idx}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar>
-                  <Wallpaper />
+                  <WallpaperIcon />
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary={item.PersonName} secondary={item.Status} />
@@ -55,7 +53,7 @@ export default function RecentActivities(props) {
                   <IconButton onClick={handleIconClick}>
                     <MoreVertIcon />
                   </IconButton>
-                  <Menu anchorEl={anchorEl} open={open} onClose={handleMenuClose}>
+                  <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={handleMenuClose}>
                     <MenuItem onClick={_ => handleMenuClick(item.Route)}>View</MenuItem>
                   </Menu>
                 </div>

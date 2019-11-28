@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import globalStyles from '../styles/styles';
 
 const BasePage = props => {

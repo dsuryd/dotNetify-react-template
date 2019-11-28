@@ -6,19 +6,19 @@ import Card from '@material-ui/core/Card';
 import purple from '@material-ui/core/colors/purple';
 
 const useStyles = makeStyles({
-  paper: {
+  card: {
     backgroundColor: purple[500],
     height: 150
   },
-  div: {
-    height: 95,
-    padding: '5px 15px 0 15px'
-  },
   header: {
     fontSize: 24,
-    color: '#fff',
+    color: 'white',
     backgroundColor: purple[600],
     padding: 10
+  },
+  body: {
+    height: 95,
+    padding: '5px 15px 0 15px'
   }
 });
 
@@ -31,7 +31,6 @@ const chartOptions = {
 
 export default function Traffic(props) {
   const classes = useStyles();
-
   const data = {
     labels: new Array(props.data.length),
     datasets: [
@@ -48,9 +47,9 @@ export default function Traffic(props) {
   };
 
   return (
-    <Card className={classes.paper}>
+    <Card className={classes.card}>
       <div className={classes.header}>Traffic</div>
-      <div className={classes.div}>
+      <div className={classes.body}>
         <Line data={data} options={chartOptions} />
       </div>
     </Card>

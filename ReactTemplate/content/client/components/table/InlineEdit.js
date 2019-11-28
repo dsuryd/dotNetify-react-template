@@ -1,8 +1,7 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import EditIcon from 'material-ui/svg-icons/content/create';
-import TextField from 'material-ui/TextField';
-import { grey400 } from 'material-ui/styles/colors';
+import EditIcon from '@material-ui/icons/create';
+import TextField from '@material-ui/core/TextField';
+import grey from '@material-ui/core/colors/grey';
 
 class InlineEdit extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class InlineEdit extends React.Component {
 
     const styles = {
       label: { minHeight: '2em', marginTop: '10px' },
-      editIcon: { width: 20, height: 20, fill: grey400, marginLeft: 8 },
+      editIcon: { width: 20, height: 20, fill: grey[400], marginLeft: 8 },
       editIconHidden: { width: 20, height: 20, fill: 'none', marginLeft: 8 }
     };
 
@@ -52,7 +51,7 @@ class InlineEdit extends React.Component {
       return (
         <TextField
           id="EditField"
-          ref={input => setFocus(input)}
+          inputRef={input => setFocus(input)}
           value={this.state.value}
           onClick={handleClick}
           onBlur={handleBlur}

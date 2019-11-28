@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { DefaultTheme } from '../styles/theme-default';
+import defaultTheme from '../styles/theme-default';
 import auth from '../auth';
 
-const Styles = withStyles({
+const styles = {
   loginContainer: {
     minWidth: 320,
     maxWidth: 400,
@@ -42,9 +41,9 @@ const Styles = withStyles({
     verticalAlign: 'text-bottom'
   },
   error: { color: 'red' }
-});
+};
 
-class LoginPage extends React.Component {
+export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { user: 'guest', password: 'dotnetify' };
@@ -52,7 +51,7 @@ class LoginPage extends React.Component {
 
   render() {
     let { user, password, error } = this.state;
-    const { classes, onAuthenticated } = this.props;
+    const { onAuthenticated } = this.props;
 
     const handleLogin = _ => {
       this.setState({ error: null });
@@ -63,18 +62,18 @@ class LoginPage extends React.Component {
     };
 
     return (
-      <ThemeProvider theme={DefaultTheme}>
+      <ThemeProvider theme={defaultTheme}>
         <div>
-          <div className={classes.loginContainer}>
-            <Card className={classes.paper}>
+          <div style={styles.loginContainer}>
+            <Card style={styles.paper}>
               <div>
-                <img src="https://dotnetify.net/content/images/dotnetify-logo-small.png" className={classes.logo} />
-                <span className={classes.text}>dotNetify</span>
+                <img src="https://dotnetify.net/content/images/dotnetify-logo-small.png" style={styles.logo} />
+                <span style={styles.text}>dotNetify</span>
               </div>
               <form>
                 <TextField
                   required
-                  className={classes.textField}
+                  style={styles.textField}
                   label="User"
                   fullWidth={true}
                   value={user}
@@ -83,17 +82,17 @@ class LoginPage extends React.Component {
                 <br />
                 <TextField
                   required
-                  className={classes.textField}
+                  style={styles.textField}
                   label="Password"
                   fullWidth={true}
                   type="password"
                   value={password}
                   onChange={event => this.setState({ password: event.target.value })}
                 />
-                {error ? <div className={classes.error}>{error}</div> : null}
+                {error ? <div style={styles.error}>{error}</div> : null}
                 <div>
                   <span>
-                    <Button variant="contained" onClick={handleLogin} color="primary" className={classes.loginBtn}>
+                    <Button variant="contained" onClick={handleLogin} color="primary" style={styles.loginBtn}>
                       Login
                     </Button>
                   </span>
@@ -110,5 +109,3 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   onAuthenticated: PropTypes.func
 };
-
-export default Styles(LoginPage);

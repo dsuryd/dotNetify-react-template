@@ -4,16 +4,14 @@ import LoginPage from './LoginPage';
 import AppLayout from './AppLayout';
 import auth from '../auth';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { authenticated: auth.hasAccessToken() };
   }
 
   render() {
     const handleAuthenticated = _ => this.setState({ authenticated: true });
-
     return !this.state.authenticated ? <LoginPage onAuthenticated={handleAuthenticated} /> : <AppLayout />;
   }
 }
@@ -21,5 +19,3 @@ class App extends React.Component {
 App.propTypes = {
   children: PropTypes.element
 };
-
-export default App;

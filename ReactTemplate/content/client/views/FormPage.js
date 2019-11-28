@@ -1,13 +1,29 @@
 import React from 'react';
 import dotnetify from 'dotnetify';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
-import SelectField from 'material-ui/SelectField';
-import TextField from 'material-ui/TextField';
-import { grey400, pink400 } from 'material-ui/styles/colors';
+import { ThemeProvider } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+import pink from '@material-ui/core/colors/pink';
 import BasePage from '../components/BasePage';
-import ThemeDefault from '../styles/theme-default';
+import defaultTheme from '../styles/theme-default';
+
+const styles = {
+  selectLabel: {
+    color: pink[400],
+    padding: '10px 0'
+  },
+  buttons: {
+    marginTop: 30,
+    float: 'right'
+  },
+  textField: {
+    marginTop: 20
+  },
+  saveButton: { marginLeft: 5 }
+};
 
 class FormPage extends React.Component {
   constructor(props) {
@@ -31,25 +47,7 @@ class FormPage extends React.Component {
   render() {
     let { dirty, Employees, Id, FirstName, LastName } = this.state;
 
-    const styles = {
-      selectLabel: { color: pink400 },
-      toggleDiv: {
-        maxWidth: 300,
-        marginTop: 40,
-        marginBottom: 5
-      },
-      toggleLabel: {
-        color: grey400,
-        fontWeight: 100
-      },
-      buttons: {
-        marginTop: 30,
-        float: 'right'
-      },
-      saveButton: { marginLeft: 5 }
-    };
-
-    const handleSelectFieldChange = (event, idx, value) => this.routeTo(Employees.find(i => i.Id == value).Route);
+    const handleSelectChange = e => this.routeTo(Employees.find(i => i.Id == e.target.value).Route);
 
     const handleCancel = _ => {
       this.dispatch({ Cancel: Id });
@@ -62,37 +60,49 @@ class FormPage extends React.Component {
     };
 
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
+      <ThemeProvider theme={defaultTheme}>
         <BasePage title="Form Page" navigation="Application / Form Page">
           <form>
-            <SelectField value={Id} onChange={handleSelectFieldChange} floatingLabelText="Select to edit" floatingLabelStyle={styles.selectLabel}>
-              {Employees.map(item => <MenuItem key={item.Id} value={item.Id} primaryText={item.Name} />)}
-            </SelectField>
+            <InputLabel id="select-label" style={styles.selectLabel}>
+              Select to edit
+            </InputLabel>
+            {Id && (
+              <Select labelId="select-label" value={Id} onChange={handleSelectChange}>
+                {Employees.map(item => (
+                  <MenuItem key={item.Id} value={item.Id}>
+                    {item.Name}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
 
             <TextField
-              hintText="Enter first name"
-              floatingLabelText="First Name"
+              style={styles.textField}
+              label="First Name"
               fullWidth={true}
               value={FirstName}
               onChange={event => this.setState({ FirstName: event.target.value, dirty: true })}
             />
 
             <TextField
-              hintText="Enter last name"
-              floatingLabelText="Last Name"
+              style={styles.textField}
+              label="Last Name"
               fullWidth={true}
               value={LastName}
               onChange={event => this.setState({ LastName: event.target.value, dirty: true })}
             />
 
             <div style={styles.buttons}>
-              <RaisedButton label="Cancel" onClick={handleCancel} disabled={!dirty} />
-
-              <RaisedButton label="Save" onClick={handleSave} disabled={!dirty} style={styles.saveButton} primary={true} />
+              <Button variant="contained" onClick={handleCancel} disabled={!dirty}>
+                Cancel
+              </Button>
+              <Button variant="contained" onClick={handleSave} disabled={!dirty} style={styles.saveButton} color="primary">
+                Save
+              </Button>
             </div>
           </form>
         </BasePage>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

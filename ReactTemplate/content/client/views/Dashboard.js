@@ -12,10 +12,10 @@ import ServerUsage from '../components/dashboard/ServerUsage';
 import Utilization from '../components/dashboard/Utilization';
 import RecentActivities from '../components/dashboard/RecentActivities';
 import globalStyles from '../styles/styles';
-import { DefaultTheme } from '../styles/theme-default';
+import defaultTheme from '../styles/theme-default';
 import auth from '../auth';
 
-class Dashboard extends React.Component {
+export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.vm = dotnetify.react.connect('Dashboard', this, {
@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <ThemeProvider theme={DefaultTheme}>
+      <ThemeProvider theme={defaultTheme}>
         <div>
           <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
@@ -88,5 +88,3 @@ class Dashboard extends React.Component {
     );
   }
 }
-
-export default Dashboard;

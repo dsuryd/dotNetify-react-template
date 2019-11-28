@@ -3,43 +3,42 @@ import PropTypes from 'prop-types';
 import { RouteLink } from 'dotnetify';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-
 import Avatar from '@material-ui/core/Avatar';
 import Icon from '@material-ui/core/Icon';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { blue, grey } from '@material-ui/core/colors';
+import { grey, blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   drawerPaper: {
-    backgroundColor: '#333'
+    backgroundColor: grey[800]
   },
   logo: {
     cursor: 'pointer',
     fontSize: 22,
-    color: '#fff',
+    color: 'white',
     lineHeight: `64px`,
     fontWeight: 'lighter',
     backgroundImage: 'url(https://dotnetify.net/content/images/dotnetify-logo-small.png)',
     backgroundRepeat: 'no-repeat',
     backgroundPositionX: 18,
     backgroundPositionY: 7,
-    backgroundColor: blue[600],
+    backgroundColor: blue[800],
     paddingLeft: 70,
     height: 56,
     width: 160
   },
   menuItem: {
     color: grey[200],
-    fontSize: 14
+    fontSize: 14,
+    width: '100%'
   },
   itemIcon: {
     color: grey[400]
   },
-
-  avatarDiv: {
+  avatarBox: {
     padding: '15px 0 20px 15px',
     backgroundImage: 'url(' + require('../images/material_bg.png') + ')',
     height: 45
@@ -50,19 +49,19 @@ const useStyles = makeStyles({
     marginRight: 15,
     boxShadow: '0px 0px 0px 8px rgba(0,0,0,0.2)'
   },
-  avatarSpan: {
-    paddingTop: 12,
+  avatarName: {
+    paddingTop: 10,
     display: 'block',
-    color: 'white',
-    fontWeight: 300,
-    textShadow: '1px 1px #444'
+    color: 'black',
+    fontSize: '24px',
+    fontWeight: 600
   }
 });
 
-const Sidebar = props => {
+export default function Sidebar(props) {
   let { vm, logoTitle, open, userAvatarUrl, menus } = props;
-
   const classes = useStyles();
+
   return (
     <Drawer
       variant="persistent"
@@ -73,9 +72,9 @@ const Sidebar = props => {
       }}
     >
       <div className={classes.logo}>{logoTitle}</div>
-      <div className={classes.avatarDiv}>
+      <div className={classes.avatarBox}>
         <Avatar src={userAvatarUrl} size={50} className={classes.avatarIcon} />
-        <span className={classes.avatarSpan}>{props.username}</span>
+        <span className={classes.avatarName}>{props.username}</span>
       </div>
       <List>
         {menus.map((menu, index) => (
@@ -91,7 +90,7 @@ const Sidebar = props => {
       </List>
     </Drawer>
   );
-};
+}
 
 Sidebar.propTypes = {
   sidebarOpen: PropTypes.bool,
@@ -99,5 +98,3 @@ Sidebar.propTypes = {
   username: PropTypes.string,
   userAvatarUrl: PropTypes.string
 };
-
-export default Sidebar;

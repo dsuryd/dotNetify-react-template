@@ -1,26 +1,11 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { blue600, grey900 } from 'material-ui/styles/colors';
-
-import { blue, grey } from '@material-ui/core/colors';
+import { blue, pink, grey } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const themeDefault = getMuiTheme({
-  palette: {},
-  appBar: {
-    height: 57,
-    color: blue600
+export const defaultTheme = createMuiTheme({
+  palette: {
+    primary: blue,
+    secondary: pink
   },
-  drawer: {
-    width: 230,
-    color: grey900
-  },
-  raisedButton: {
-    primaryColor: blue600
-  }
-});
-
-export const DefaultTheme = createMuiTheme({
-  palette: {},
   appBar: {
     height: 57,
     color: blue[600]
@@ -34,4 +19,4 @@ export const DefaultTheme = createMuiTheme({
   }
 });
 
-export default themeDefault;
+export default defaultTheme;

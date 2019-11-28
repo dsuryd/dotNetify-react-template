@@ -12,12 +12,13 @@ import { Memory, SimCard, NetworkWifi } from '@material-ui/icons';
 import cyan from '@material-ui/core/colors/cyan';
 import pink from '@material-ui/core/colors/pink';
 import purple from '@material-ui/core/colors/purple';
-import GlobalStyles from '../../styles/styles';
+import globalStyles from '../../styles/styles';
 
 const useStyles = makeStyles({
-  paper: {
+  card: {
     minHeight: 344,
-    padding: 10
+    padding: 10,
+    paddingBottom: 0
   },
   legend: {
     paddingTop: 60
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
   legendText: {
     fontSize: '12px'
   },
-  pieChartDiv: {
+  pieChartArea: {
     height: 290,
     textAlign: 'center'
   }
@@ -45,7 +46,6 @@ const chartOptions = {
 
 export default function Utilization(props) {
   const classes = useStyles();
-
   const data = {
     labels: props.label,
     datasets: [
@@ -57,11 +57,11 @@ export default function Utilization(props) {
   };
 
   return (
-    <Card className={classes.paper}>
-      <span style={GlobalStyles.title}>Utilization</span>
+    <Card className={classes.card}>
+      <span style={globalStyles.title}>Utilization</span>
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-          <div className={classes.pieChartDiv}>
+          <div className={classes.pieChartArea}>
             <Doughnut data={data} options={chartOptions} />
           </div>
         </div>

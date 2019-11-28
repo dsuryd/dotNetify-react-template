@@ -1,19 +1,34 @@
 import React from 'react';
 import dotnetify from 'dotnetify';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import Snackbar from 'material-ui/Snackbar';
-import TextField from 'material-ui/TextField';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import IconRemove from 'material-ui/svg-icons/content/clear';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import { pink500, grey200, grey500 } from 'material-ui/styles/colors';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import Snackbar from '@material-ui/core/Snackbar';
+import TextField from '@material-ui/core/TextField';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
 import BasePage from '../components/BasePage';
 import Pagination from '../components/table/Pagination';
 import InlineEdit from '../components/table/InlineEdit';
-import ThemeDefault from '../styles/theme-default';
+import defaultTheme from '../styles/theme-default';
 
-class TablePage extends React.Component {
+const styles = {
+  addButton: { margin: '1em' },
+  columns: {
+    id: { width: '10%' },
+    firstName: { width: '35%' },
+    lastName: { width: '35%' },
+    remove: { width: '15%' }
+  },
+  pagination: { marginTop: '1em' }
+};
+
+export default class TablePage extends React.Component {
   constructor(props) {
     super(props);
     this.vm = dotnetify.react.connect('Table', this);
@@ -33,18 +48,6 @@ class TablePage extends React.Component {
 
   render() {
     let { addName, Employees, Pages, SelectedPage, ShowNotification } = this.state;
-
-    const styles = {
-      addButton: { margin: '1em' },
-      removeIcon: { fill: grey500 },
-      columns: {
-        id: { width: '10%' },
-        firstName: { width: '35%' },
-        lastName: { width: '35%' },
-        remove: { width: '15%' }
-      },
-      pagination: { marginTop: '1em' }
-    };
 
     const handleAdd = _ => {
       if (addName) {
@@ -68,18 +71,17 @@ class TablePage extends React.Component {
     const hideNotification = _ => this.setState({ ShowNotification: false });
 
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
+      <ThemeProvider theme={defaultTheme}>
         <BasePage title="Table Page" navigation="Application / Table Page">
           <div>
             <div>
-              <FloatingActionButton onClick={handleAdd} style={styles.addButton} backgroundColor={pink500} mini={true}>
-                <ContentAdd />
-              </FloatingActionButton>
+              <Fab onClick={handleAdd} style={styles.addButton} color="secondary">
+                <AddIcon />
+              </Fab>
               <TextField
                 id="AddName"
-                floatingLabelText="Add"
-                hintText="Type full name here"
-                floatingLabelFixed={true}
+                label="Add"
+                helperText="Type full name here"
                 value={addName}
                 onKeyPress={event => (event.key === 'Enter' ? handleAdd() : null)}
                 onChange={event => this.setState({ addName: event.target.value })}
@@ -87,35 +89,29 @@ class TablePage extends React.Component {
             </div>
 
             <Table>
-              <TableHeader>
+              <TableHead>
                 <TableRow>
-                  <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.columns.firstName}>First Name</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.columns.lastName}>Last Name</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.columns.remove}>Remove</TableHeaderColumn>
+                  <TableCell style={styles.columns.id}>ID</TableCell>
+                  <TableCell style={styles.columns.firstName}>First Name</TableCell>
+                  <TableCell style={styles.columns.lastName}>Last Name</TableCell>
+                  <TableCell style={styles.columns.remove}>Remove</TableCell>
                 </TableRow>
-              </TableHeader>
+              </TableHead>
               <TableBody>
                 {Employees.map(item => (
                   <TableRow key={item.Id}>
-                    <TableRowColumn style={styles.columns.id}>{item.Id}</TableRowColumn>
-                    <TableRowColumn style={styles.columns.firstName}>
+                    <TableCell style={styles.columns.id}>{item.Id}</TableCell>
+                    <TableCell style={styles.columns.firstName}>
                       <InlineEdit onChange={value => handleUpdate({ Id: item.Id, FirstName: value })}>{item.FirstName}</InlineEdit>
-                    </TableRowColumn>
-                    <TableRowColumn style={styles.columns.lastName}>
+                    </TableCell>
+                    <TableCell style={styles.columns.lastName}>
                       <InlineEdit onChange={value => handleUpdate({ Id: item.Id, LastName: value })}>{item.LastName}</InlineEdit>
-                    </TableRowColumn>
-                    <TableRowColumn style={styles.columns.remove}>
-                      <FloatingActionButton
-                        onClick={_ => this.dispatch({ Remove: item.Id })}
-                        zDepth={0}
-                        mini={true}
-                        backgroundColor={grey200}
-                        iconStyle={styles.removeIcon}
-                      >
-                        <IconRemove />
-                      </FloatingActionButton>
-                    </TableRowColumn>
+                    </TableCell>
+                    <TableCell style={styles.columns.remove}>
+                      <IconButton onClick={_ => this.dispatch({ Remove: item.Id })}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -123,12 +119,10 @@ class TablePage extends React.Component {
 
             <Pagination style={styles.pagination} pages={Pages} select={SelectedPage} onSelect={handleSelectPage} />
 
-            <Snackbar open={ShowNotification} message="Changes saved" autoHideDuration={1000} onRequestClose={hideNotification} />
+            <Snackbar open={ShowNotification} message="Changes saved" autoHideDuration={1000} onClose={hideNotification} />
           </div>
         </BasePage>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }
-
-export default TablePage;

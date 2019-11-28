@@ -8,7 +8,7 @@ This is a full React SPA template for ASP.NET Core featuring:
 - Reactive, real-time dashboard page.
 - Edit form + CRUD table pages.
 - Login page with JWT bearer token authentication.
-- UI components from [Material-UI](http://www.material-ui.com/#/).
+- UI components from [Material-UI](https://material-ui.com/).
 - Routing with deep links.
 - Webpack hot module replacement + [dotnet watch](https://docs.microsoft.com/en-us/aspnet/core/tutorials/dotnet-watch).
 - [OpenID Connect/OAuth2](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) authentication server.

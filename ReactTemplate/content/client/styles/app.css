@@ -28,12 +28,12 @@ html,
 }
 
 a {
-  color: #fff;
+  color: 'white';
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .m-b-15 {
