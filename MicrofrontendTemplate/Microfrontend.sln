@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal", "Portal\Portal.csproj", "{3A4AEABB-3F8D-4442-B844-5C63975AFF76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactDashboardApp", "ReactDashboardApp\ReactDashboardApp.csproj", "{B90BE04D-66A7-44B7-AEFF-CD41AA38CEFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactFormApp", "ReactFormApp\ReactFormApp.csproj", "{D0EB7EA1-5ACF-4E55-A637-63AA19F6A785}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{6FF33A2C-7C94-4943-8F3F-24BAB26447F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactTodoApp", "ReactTodoApp\ReactTodoApp.csproj", "{4B835F6E-C512-48B3-86CD-C41298A6B04D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueTodoApp", "VueTodoApp\VueTodoApp.csproj", "{8C57EFD7-FD0E-4B9F-9CA8-2B7866F0DE5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A4AEABB-3F8D-4442-B844-5C63975AFF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A4AEABB-3F8D-4442-B844-5C63975AFF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A4AEABB-3F8D-4442-B844-5C63975AFF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A4AEABB-3F8D-4442-B844-5C63975AFF76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90BE04D-66A7-44B7-AEFF-CD41AA38CEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90BE04D-66A7-44B7-AEFF-CD41AA38CEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90BE04D-66A7-44B7-AEFF-CD41AA38CEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90BE04D-66A7-44B7-AEFF-CD41AA38CEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0EB7EA1-5ACF-4E55-A637-63AA19F6A785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EB7EA1-5ACF-4E55-A637-63AA19F6A785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EB7EA1-5ACF-4E55-A637-63AA19F6A785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EB7EA1-5ACF-4E55-A637-63AA19F6A785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF33A2C-7C94-4943-8F3F-24BAB26447F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF33A2C-7C94-4943-8F3F-24BAB26447F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF33A2C-7C94-4943-8F3F-24BAB26447F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF33A2C-7C94-4943-8F3F-24BAB26447F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B835F6E-C512-48B3-86CD-C41298A6B04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B835F6E-C512-48B3-86CD-C41298A6B04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B835F6E-C512-48B3-86CD-C41298A6B04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B835F6E-C512-48B3-86CD-C41298A6B04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C57EFD7-FD0E-4B9F-9CA8-2B7866F0DE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C57EFD7-FD0E-4B9F-9CA8-2B7866F0DE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C57EFD7-FD0E-4B9F-9CA8-2B7866F0DE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C57EFD7-FD0E-4B9F-9CA8-2B7866F0DE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA286E46-A723-4519-AC1B-4D323C6C5AD9}
+	EndGlobalSection
+EndGlobal

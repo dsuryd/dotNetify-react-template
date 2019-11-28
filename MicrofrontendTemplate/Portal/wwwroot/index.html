@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+       <title>DotNetify Micro-Frontend Demo</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="initial-scale=1, width=device-width"/>
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+       <style>
+          body { height: 100vh }
+       </style>
+    </head>
+    <body>
+      <my-portal />
+
+        <!-- Polyfills for IE 11 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>        
+    
+        <script src="https://unpkg.com/react@latest/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@latest/umd/react-dom.production.min.js"></script>  
+        <script src="https://cdn.jsdelivr.net/npm/@aspnet/signalr@1/dist/browser/signalr.min.js"></script>
+
+        <script src="/dist/styled-components.min.js"></script>        
+        <script src="/dist/dotnetify-react.min.js"></script> 
+        <script src="/dist/system.js"></script>        
+        
+        <script src="/dist/lib/basic-web-components.bundle.js"></script> 
+        <script src="/dist/web-components/chart.js"></script> 
+        <script src="/dist/web-components/datagrid.js"></script> 
+        <script src="/dist/app.js"></script>  
+
+    </body>
+</html>
