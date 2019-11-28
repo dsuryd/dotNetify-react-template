@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using DotNetify;
 using DotNetify.Security;
@@ -26,11 +27,10 @@ namespace dotnetify_react_template
          services.AddTransient<ILiveDataService, MockLiveDataService>();
          services.AddSingleton<IEmployeeService, EmployeeService>();
       }
-      public void Configure(IApplicationBuilder app)
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
       {
          app.UseAuthentication();
          app.UseWebSockets();
-         app.UseSignalR(routes => routes.MapDotNetifyHub());
          app.UseDotNetify(config =>
          {
             // Middleware to do authenticate token in incoming request headers.
@@ -48,12 +48,19 @@ namespace dotnetify_react_template
             config.UseFilter<AuthorizeFilter>();
          });
 
-         app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-         {
+        if (env.IsDevelopment())
+        {
+#pragma warning disable CS0618          
+          app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+          {
             HotModuleReplacement = true
-         });
+          });
+#pragma warning restore CS0618          
+        }
 
          app.UseFileServer();
+         app.UseRouting();
+         app.UseEndpoints(endpoints => endpoints.MapHub<DotNetifyHub>("/dotnetify"));
 
          app.Run(async (context) =>
          {
