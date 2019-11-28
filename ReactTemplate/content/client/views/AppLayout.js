@@ -51,13 +51,13 @@ class AppLayout extends React.Component {
     const handleSidebarToggle = () => this.setState({ sidebarOpen: !this.state.sidebarOpen });
 
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
+      <ThemeProvider theme={DefaultTheme}>
         <div>
           <Header styles={styles.header} onSidebarToggle={handleSidebarToggle} />
           <Sidebar vm={this.vm} logoTitle="dotNetify" open={sidebarOpen} userAvatarUrl={userAvatarUrl} menus={Menus} username={UserName} />
           <div id="Content" style={styles.container} />
         </div>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

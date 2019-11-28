@@ -7,12 +7,14 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import auth from '../auth';
+import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1
   },
   appBar: {
+    backgroundColor: blue[600],
     position: 'fixed',
     top: 0,
     overflow: 'hidden',
