@@ -1,63 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
-import Menu from 'material-ui/svg-icons/navigation/menu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import { white } from 'material-ui/styles/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import auth from '../auth';
 
-const Header = props => {
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
+  },
+  appBar: {
+    position: 'fixed',
+    top: 0,
+    overflow: 'hidden',
+    maxHeight: 56
+  },
+  menuButton: {
+    marginLeft: -24
+  },
+  title: {
+    flexGrow: 1
+  }
+});
+
+export default function Header(props) {
+  const classes = useStyles();
   const { styles, onSidebarToggle } = props;
 
-  const style = {
-    appBar: {
-      position: 'fixed',
-      top: 0,
-      overflow: 'hidden',
-      maxHeight: 57
-    },
-    menuButton: { marginLeft: 10 },
-    iconsRightContainer: { marginLeft: 20 }
-  };
-
-  const handleSignout = _ => auth.signOut();
-
   return (
-    <div>
-      <AppBar
-        style={{ ...styles, ...style.appBar }}
-        iconElementLeft={
-          <IconButton style={style.menuButton} onClick={onSidebarToggle}>
-            <Menu color={white} />
+    <div className={classes.root}>
+      <AppBar style={styles} className={classes.appBar}>
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={onSidebarToggle}>
+            <MenuIcon />
           </IconButton>
-        }
-        iconElementRight={
-          <div style={style.iconsRightContainer}>
-            <IconMenu
-              color={white}
-              iconButtonElement={
-                <IconButton>
-                  <MoreVertIcon color={white} />
-                </IconButton>
-              }
-              targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-            >
-              <MenuItem primaryText="Sign out" onClick={handleSignout} />
-            </IconMenu>
-          </div>
-        }
-      />
+          <h5 className={classes.title} />
+          <Button edge="end" color="inherit" onClick={_ => auth.logout()}>
+            Logout
+          </Button>
+        </Toolbar>
+      </AppBar>
     </div>
   );
-};
+}
 
 Header.propTypes = {
   styles: PropTypes.object,
-  handleChangeRequestNavDrawer: PropTypes.func
+  onSidebarToggle: PropTypes.func
 };
-
-export default Header;

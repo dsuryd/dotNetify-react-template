@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dotnetify from 'dotnetify';
+import { ThemeProvider } from '@material-ui/core/styles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import ThemeDefault from '../styles/theme-default';
+import ThemeDefault, { DefaultTheme } from '../styles/theme-default';
 import auth from '../auth';
 
 class AppLayout extends React.Component {
@@ -53,14 +54,7 @@ class AppLayout extends React.Component {
       <MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
           <Header styles={styles.header} onSidebarToggle={handleSidebarToggle} />
-          <Sidebar
-            vm={this.vm}
-            logoTitle="dotNetify"
-            open={sidebarOpen}
-            userAvatarUrl={userAvatarUrl}
-            menus={Menus}
-            username={UserName}
-          />
+          <Sidebar vm={this.vm} logoTitle="dotNetify" open={sidebarOpen} userAvatarUrl={userAvatarUrl} menus={Menus} username={UserName} />
           <div id="Content" style={styles.container} />
         </div>
       </MuiThemeProvider>

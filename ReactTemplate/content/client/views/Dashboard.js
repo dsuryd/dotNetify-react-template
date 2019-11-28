@@ -12,7 +12,7 @@ import ServerUsage from '../components/dashboard/ServerUsage';
 import Utilization from '../components/dashboard/Utilization';
 import RecentActivities from '../components/dashboard/RecentActivities';
 import globalStyles from '../styles/styles';
-import ThemeDefault from '../styles/theme-default';
+import { DefaultTheme } from '../styles/theme-default';
 import auth from '../auth';
 
 class Dashboard extends React.Component {
@@ -42,49 +42,49 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      // <ThemeProvider theme={ThemeDefault}>
-      <div>
-        <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
+      <ThemeProvider theme={DefaultTheme}>
+        <div>
+          <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-            <InfoBox Icon={CloudDownload} color={pink[600]} title="Download" value={this.state.Download} />
+          <div className="row">
+            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+              <InfoBox Icon={CloudDownload} color={pink[600]} title="Download" value={this.state.Download} />
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+              <InfoBox Icon={CloudUpload} color={cyan[600]} title="Upload" value={this.state.Upload} />
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+              <InfoBox Icon={NetworkCheck} color={purple[600]} title="Latency" value={this.state.Latency} />
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+              <InfoBox Icon={Face} color={orange[600]} title="Users" value={this.state.Users} />
+            </div>
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-            <InfoBox Icon={CloudUpload} color={cyan[600]} title="Upload" value={this.state.Upload} />
+          <div className="row">
+            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-md m-b-15">
+              <Traffic data={this.state.Traffic} />
+            </div>
+
+            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-15">
+              <ServerUsage data={this.state.ServerUsage} label={this.state.ServerUsageLabel} />
+            </div>
           </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-            <InfoBox Icon={NetworkCheck} color={purple[600]} title="Latency" value={this.state.Latency} />
-          </div>
+          <div className="row">
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
+              <RecentActivities vm={this.vm} data={this.state.RecentActivities} />
+            </div>
 
-          <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
-            <InfoBox Icon={Face} color={orange[600]} title="Users" value={this.state.Users} />
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
+              <Utilization data={this.state.Utilization} label={this.state.UtilizationLabel} />
+            </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-md m-b-15">
-            <Traffic data={this.state.Traffic} />
-          </div>
-
-          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-15">
-            <ServerUsage data={this.state.ServerUsage} label={this.state.ServerUsageLabel} />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
-            <RecentActivities vm={this.vm} data={this.state.RecentActivities} />
-          </div>
-
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
-            <Utilization data={this.state.Utilization} label={this.state.UtilizationLabel} />
-          </div>
-        </div>
-      </div>
-      // </ThemeProvider>
+      </ThemeProvider>
     );
   }
 }
