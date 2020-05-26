@@ -13,16 +13,16 @@ import defaultTheme from '../styles/theme-default';
 const styles = {
   selectLabel: {
     color: pink[400],
-    padding: '10px 0'
+    padding: '10px 0',
   },
   buttons: {
     marginTop: 30,
-    float: 'right'
+    float: 'right',
   },
   textField: {
-    marginTop: 20
+    marginTop: 20,
   },
-  saveButton: { marginLeft: 5 }
+  saveButton: { marginLeft: 5 },
 };
 
 class FormPage extends React.Component {
@@ -36,7 +36,7 @@ class FormPage extends React.Component {
       dirty: false,
       Employees: [],
       FirstName: '',
-      LastName: ''
+      LastName: '',
     };
   }
 
@@ -61,13 +61,13 @@ class FormPage extends React.Component {
 
     return (
       <ThemeProvider theme={defaultTheme}>
-        <BasePage title="Form Page" navigation="Application / Form Page">
+        <BasePage title='Form Page' navigation='Application / Form Page'>
           <form>
-            <InputLabel id="select-label" style={styles.selectLabel}>
+            <InputLabel id='select-label' style={styles.selectLabel}>
               Select to edit
             </InputLabel>
             {Id && (
-              <Select labelId="select-label" value={Id} onChange={handleSelectChange}>
+              <Select labelId='select-label' value={Id} onChange={handleSelectChange}>
                 {Employees.map(item => (
                   <MenuItem key={item.Id} value={item.Id}>
                     {item.Name}
@@ -78,7 +78,7 @@ class FormPage extends React.Component {
 
             <TextField
               style={styles.textField}
-              label="First Name"
+              label='First Name'
               fullWidth={true}
               value={FirstName}
               onChange={event => this.setState({ FirstName: event.target.value, dirty: true })}
@@ -86,17 +86,17 @@ class FormPage extends React.Component {
 
             <TextField
               style={styles.textField}
-              label="Last Name"
+              label='Last Name'
               fullWidth={true}
               value={LastName}
               onChange={event => this.setState({ LastName: event.target.value, dirty: true })}
             />
 
             <div style={styles.buttons}>
-              <Button variant="contained" onClick={handleCancel} disabled={!dirty}>
+              <Button variant='contained' onClick={handleCancel} disabled={!dirty}>
                 Cancel
               </Button>
-              <Button variant="contained" onClick={handleSave} disabled={!dirty} style={styles.saveButton} color="primary">
+              <Button variant='contained' onClick={handleSave} disabled={!dirty} style={styles.saveButton} color='primary'>
                 Save
               </Button>
             </div>

@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { Line } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,29 +7,33 @@ import purple from '@material-ui/core/colors/purple';
 const useStyles = makeStyles({
   card: {
     backgroundColor: purple[500],
-    height: 150
+    height: 150,
   },
   header: {
     fontSize: 24,
     color: 'white',
     backgroundColor: purple[600],
-    padding: 10
+    padding: 10,
   },
   body: {
     height: 95,
-    padding: '5px 15px 0 15px'
-  }
+    padding: '5px 15px 0 15px',
+  },
 });
 
 const chartOptions = {
   legend: { display: false },
-  scales: { xAxes: [ { display: false } ], yAxes: [ { display: false } ] },
+  scales: { xAxes: [{ display: false }], yAxes: [{ display: false }] },
   layout: { padding: { left: 5, right: 5, top: 5, bottom: 5 } },
-  maintainAspectRatio: false
+  maintainAspectRatio: false,
 };
 
-export default function Traffic(props) {
-  const classes = useStyles();
+export interface ITrafficProps {
+  data: number[];
+}
+
+export default function Traffic(props: ITrafficProps) {
+  const classes = useStyles({});
   const data = {
     labels: new Array(props.data.length),
     datasets: [
@@ -41,9 +44,9 @@ export default function Traffic(props) {
         borderColor: '#8884d8',
         borderWidth: 2,
         pointBorderWidth: 2,
-        cubicInterpolationMode: 'monotone'
-      }
-    ]
+        cubicInterpolationMode: 'monotone',
+      },
+    ],
   };
 
   return (
@@ -55,7 +58,3 @@ export default function Traffic(props) {
     </Card>
   );
 }
-
-Traffic.propTypes = {
-  data: PropTypes.array
-};

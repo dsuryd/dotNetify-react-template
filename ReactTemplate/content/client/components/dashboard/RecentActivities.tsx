@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { IDotnetifyVM, RouteType } from 'dotnetify';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import List from '@material-ui/core/List';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -23,25 +22,36 @@ const useStyles = makeStyles({
     fontWeight: 'lighter',
     padding: 10,
     color: 'white',
-    backgroundColor: cyan[600]
-  }
+    backgroundColor: cyan[600],
+  },
 });
 
-export default function RecentActivities(props) {
-  const [ anchorEl, setAnchorEl ] = React.useState(null);
-  const classes = useStyles();
+export class ActivityModel {
+  PersonName: string;
+  Status: string;
+  Route: RouteType;
+}
 
-  const handleIconClick = event => setAnchorEl(event.currentTarget);
+export interface IRecentActivitiesProps {
+  vm: IDotnetifyVM;
+  data: ActivityModel[];
+}
+
+export default function RecentActivities({ vm, data }: IRecentActivitiesProps) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles({});
+
+  const handleIconClick = (event: React.MouseEvent) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
-  const handleMenuClick = route => props.vm.$routeTo(route);
+  const handleMenuClick = (route: RouteType) => vm.$routeTo(route);
 
   return (
     <Card>
       <div className={classes.header}>Recent Activities</div>
       <List>
-        {props.data.map((item, idx) => (
+        {data.map((item, idx) => (
           <React.Fragment key={idx}>
-            <ListItem alignItems="flex-start">
+            <ListItem alignItems='flex-start'>
               <ListItemAvatar>
                 <Avatar>
                   <WallpaperIcon />
@@ -59,14 +69,10 @@ export default function RecentActivities(props) {
                 </div>
               </ListItemSecondaryAction>
             </ListItem>
-            <Divider inset="true" />
+            <Divider variant='inset' />
           </React.Fragment>
         ))}
       </List>
     </Card>
   );
 }
-
-RecentActivities.propTypes = {
-  data: PropTypes.array
-};

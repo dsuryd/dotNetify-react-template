@@ -1,3 +1,4 @@
+/** @type {{navigation: React.CSSProperties, title: React.CSSProperties, paper: React.CSSProperties, clear: React.CSSProperties}} */
 const styles = {
   navigation: {
     fontSize: 15,

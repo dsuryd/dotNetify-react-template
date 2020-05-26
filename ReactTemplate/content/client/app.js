@@ -4,7 +4,4 @@ import App from './routes.js';
 import 'flexboxgrid/css/flexboxgrid.css';
 import './styles/app.css';
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('App'));
-
+ReactDOM.render(<App />, document.getElementById('App'));

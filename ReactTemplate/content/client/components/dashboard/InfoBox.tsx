@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import grey from '@material-ui/core/colors/grey';
@@ -8,19 +7,19 @@ const useStyles = makeStyles({
   content: {
     padding: '5px 10px',
     marginLeft: 90,
-    height: 80
+    height: 80,
   },
   number: {
     display: 'block',
     fontWeight: 'bold',
     fontSize: 18,
     paddingTop: 10,
-    color: grey[800]
+    color: grey[800],
   },
   text: {
     fontSize: 18,
     fontWeight: 'lighter',
-    color: grey[600]
+    color: grey[600],
   },
   iconBox: {
     float: 'left',
@@ -28,18 +27,26 @@ const useStyles = makeStyles({
     width: 90,
     textAlign: 'center',
     color: 'white',
-    backgroundColor: props => props.color
+    backgroundColor: (props: any) => props.color,
   },
   icon: {
     height: 48,
     width: 48,
     marginTop: 20,
-    maxWidth: '100%'
-  }
+    maxWidth: '100%',
+  },
 });
 
-export default function InfoBox({ title, value, Icon, ...props }) {
-  const classes = useStyles(props);
+export interface IInfoBoxProps {
+  icon: React.ComponentType;
+  color: string;
+  title: string;
+  value: any;
+}
+
+export default function InfoBox({ icon, color, title, value }: IInfoBoxProps) {
+  const classes = useStyles({ color });
+  const Icon: any = icon;
 
   return (
     <Card>
@@ -54,10 +61,3 @@ export default function InfoBox({ title, value, Icon, ...props }) {
     </Card>
   );
 }
-
-InfoBox.propTypes = {
-  Icon: PropTypes.any,
-  color: PropTypes.string,
-  title: PropTypes.string,
-  value: PropTypes.any
-};
