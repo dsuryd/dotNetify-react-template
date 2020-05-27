@@ -1,5 +1,5 @@
-import React from 'react';
-import dotnetify from 'dotnetify';
+import * as React from 'react';
+import dotnetify, { IDotnetifyVM, RouteType } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -13,31 +13,46 @@ import defaultTheme from '../styles/theme-default';
 const styles = {
   selectLabel: {
     color: pink[400],
-    padding: '10px 0',
+    padding: '10px 0'
   },
   buttons: {
     marginTop: 30,
-    float: 'right',
-  },
+    float: 'right'
+  } as React.CSSProperties,
   textField: {
-    marginTop: 20,
+    marginTop: 20
   },
-  saveButton: { marginLeft: 5 },
+  saveButton: { marginLeft: 5 }
 };
 
-class FormPage extends React.Component {
-  constructor(props) {
+class EmployeeModel {
+  Id: string;
+  Name: string;
+  Route: RouteType;
+}
+
+class FormPageModel {
+  Employees: EmployeeModel[] = [];
+  Id: string;
+  FirstName: string = '';
+  LastName: string = '';
+}
+
+class FormPageState extends FormPageModel {
+  dirty: boolean;
+}
+
+export default class FormPage extends React.Component<any, FormPageState> {
+  state: FormPageState = new FormPageState();
+  vm: IDotnetifyVM;
+  dispatch: (state: any) => void;
+  routeTo: (route: RouteType) => void;
+
+  constructor(props: any) {
     super(props);
     this.vm = dotnetify.react.connect('Form', this);
     this.dispatch = state => this.vm.$dispatch(state);
     this.routeTo = route => this.vm.$routeTo(route);
-
-    this.state = {
-      dirty: false,
-      Employees: [],
-      FirstName: '',
-      LastName: '',
-    };
   }
 
   componentWillUnmount() {
@@ -47,7 +62,7 @@ class FormPage extends React.Component {
   render() {
     let { dirty, Employees, Id, FirstName, LastName } = this.state;
 
-    const handleSelectChange = e => this.routeTo(Employees.find(i => i.Id == e.target.value).Route);
+    const handleSelectChange = (e: React.ChangeEvent<any>) => this.routeTo(Employees.find(i => i.Id == e.target.value).Route);
 
     const handleCancel = _ => {
       this.dispatch({ Cancel: Id });
@@ -106,5 +121,3 @@ class FormPage extends React.Component {
     );
   }
 }
-
-export default FormPage;

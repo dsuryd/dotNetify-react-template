@@ -28,9 +28,10 @@
   },
   "devDependencies": {
     "@types/material-ui": "~0.21.7",
-    "@types/node": "^14.0.5",
+    "@types/node": "~14.0.5",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
+    "@types/webpack-env": "~1.15.2",
     "aspnet-webpack": "~3.0.0",
     "babel-core": "~6.26.3",
     "babel-loader": "~7.1.4",

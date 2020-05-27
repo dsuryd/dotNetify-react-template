@@ -1,5 +1,6 @@
-/** @type {{navigation: React.CSSProperties, title: React.CSSProperties, paper: React.CSSProperties, clear: React.CSSProperties}} */
-const styles = {
+import * as React from 'react';
+
+const styles: { [name: string]: React.CSSProperties } = {
   navigation: {
     fontSize: 15,
     fontWeight: 'lighter',

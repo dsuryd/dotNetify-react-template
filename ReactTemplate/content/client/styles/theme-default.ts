@@ -6,6 +6,7 @@ export const defaultTheme = createMuiTheme({
     primary: blue,
     secondary: pink
   },
+  // @ts-ignore
   appBar: {
     height: 57,
     color: blue[600]
