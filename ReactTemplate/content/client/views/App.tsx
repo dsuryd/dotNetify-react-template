@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import LoginPage from './LoginPage';
 import AppLayout from './AppLayout';
 import auth from '../auth';

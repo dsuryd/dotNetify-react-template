@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -16,31 +16,31 @@ const useStyles = makeStyles({
     top: '20%',
     left: 0,
     right: 0,
-    margin: 'auto',
+    margin: 'auto'
   },
   paper: {
     padding: 20,
-    overflow: 'auto',
+    overflow: 'auto'
   },
   loginBtn: {
-    float: 'right',
+    float: 'right'
   },
   logo: {
     width: 20,
     height: 20,
     marginRight: 6,
-    display: 'inline-block',
+    display: 'inline-block'
   },
   textField: {
-    margin: '1rem 0',
+    margin: '1rem 0'
   },
   text: {
     color: '#333',
     fontWeight: 'bold',
     backgroundColor: 'transparent',
-    verticalAlign: 'text-bottom',
+    verticalAlign: 'text-bottom'
   },
-  error: { color: 'red' },
+  error: { color: 'red' }
 });
 
 export interface ILoginPageProps {

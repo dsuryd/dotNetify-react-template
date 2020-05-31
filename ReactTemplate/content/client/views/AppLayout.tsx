@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import dotnetify, { IDotnetifyVM, RouteTarget } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
@@ -32,7 +32,7 @@ class AppLayout extends React.Component<IAppLayoutProps, AppLayoutModel> {
       exceptionHandler: _ => auth.signOut(),
       onRouteEnter: (path, template) => {
         template.Target = 'Content';
-      },
+      }
     });
 
     this.state.sidebarOpen = shouldSidebarOpen(props.width);
@@ -56,8 +56,8 @@ class AppLayout extends React.Component<IAppLayoutProps, AppLayoutModel> {
       header: { paddingLeft: sidebarOpen ? paddingLeftSidebar : 0 },
       container: {
         margin: '80px 20px 20px 15px',
-        paddingLeft: sidebarOpen && this.props.width !== 'sm' ? paddingLeftSidebar : 0,
-      },
+        paddingLeft: sidebarOpen && this.props.width !== 'sm' ? paddingLeftSidebar : 0
+      }
     };
 
     const handleSidebarToggle = () => this.setState({ sidebarOpen: !this.state.sidebarOpen });

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import dotnetify, { IDotnetifyVM, RouteType } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';

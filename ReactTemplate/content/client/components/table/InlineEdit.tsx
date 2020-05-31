@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import EditIcon from '@material-ui/icons/create';
 import TextField from '@material-ui/core/TextField';
 import grey from '@material-ui/core/colors/grey';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,24 +12,24 @@ import auth from '../auth';
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   appBar: {
     backgroundColor: blue[600],
     overflow: 'hidden',
     position: 'fixed',
     top: 0,
-    maxHeight: 56,
+    maxHeight: 56
   },
   menuButton: {
-    marginLeft: -24,
+    marginLeft: -24
   },
   morebutton: {
-    color: 'white',
+    color: 'white'
   },
   title: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 });
 
 export interface IHeaderProps {

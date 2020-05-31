@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import dotnetify, { IDotnetifyVM } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { CloudDownload, CloudUpload, NetworkCheck, Face } from '@material-ui/icons';
@@ -39,7 +39,7 @@ export default class Dashboard extends React.Component<any, DashboardModel> {
       exceptionHandler: ex => {
         alert(ex.message);
         auth.signOut();
-      },
+      }
     });
     this.dispatch = state => this.vm.$dispatch(state);
   }

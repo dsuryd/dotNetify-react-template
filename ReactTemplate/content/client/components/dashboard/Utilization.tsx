@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -17,30 +17,30 @@ const useStyles = makeStyles({
   card: {
     minHeight: 344,
     padding: 10,
-    paddingBottom: 0,
+    paddingBottom: 0
   },
   legend: {
-    paddingTop: 60,
+    paddingTop: 60
   },
   legendText: {
-    fontSize: '12px',
+    fontSize: '12px'
   },
   pieChartArea: {
     height: 290,
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
 const labelStyles = [
   { color: cyan[600], icon: <Memory /> },
   { color: pink[600], icon: <SimCard /> },
-  { color: purple[600], icon: <NetworkWifi /> },
+  { color: purple[600], icon: <NetworkWifi /> }
 ];
 
 const chartOptions = {
   legend: { display: false },
   layout: { padding: { left: 0, right: 10, top: 20, bottom: 10 } },
-  maintainAspectRatio: false,
+  maintainAspectRatio: false
 };
 
 export interface IUtilizationProps {
@@ -55,9 +55,9 @@ export default function Utilization(props: IUtilizationProps) {
     datasets: [
       {
         data: props.data,
-        backgroundColor: [cyan[600], pink[600], purple[600]],
-      },
-    ],
+        backgroundColor: [cyan[600], pink[600], purple[600]]
+      }
+    ]
   };
 
   return (

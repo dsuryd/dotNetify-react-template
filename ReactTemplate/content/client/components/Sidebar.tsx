@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { RouteLink, IDotnetifyVM } from 'dotnetify';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,7 +12,7 @@ import { grey, blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   drawerPaper: {
-    backgroundColor: grey[800],
+    backgroundColor: grey[800]
   },
   logo: {
     cursor: 'pointer',
@@ -27,34 +27,34 @@ const useStyles = makeStyles({
     backgroundColor: blue[800],
     paddingLeft: 70,
     height: 56,
-    width: 160,
+    width: 160
   },
   menuItem: {
     color: grey[200],
     fontSize: 14,
-    width: '100%',
+    width: '100%'
   },
   itemIcon: {
-    color: grey[400],
+    color: grey[400]
   },
   avatarBox: {
     padding: '15px 0 20px 15px',
     backgroundImage: 'url(' + require('../images/material_bg.png') + ')',
-    height: 45,
+    height: 45
   },
   avatarIcon: {
     float: 'left',
     display: 'block',
     marginRight: 15,
-    boxShadow: '0px 0px 0px 8px rgba(0,0,0,0.2)',
+    boxShadow: '0px 0px 0px 8px rgba(0,0,0,0.2)'
   },
   avatarName: {
     paddingTop: 10,
     display: 'block',
     color: 'black',
     fontSize: '24px',
-    fontWeight: 600,
-  },
+    fontWeight: 600
+  }
 });
 
 export interface ISidebarProps {
@@ -74,7 +74,7 @@ export default function Sidebar({ vm, logoTitle, open, userName, userAvatarUrl, 
       variant='persistent'
       open={open}
       classes={{
-        paper: classes.drawerPaper,
+        paper: classes.drawerPaper
       }}
     >
       <div className={classes.logo}>{logoTitle}</div>

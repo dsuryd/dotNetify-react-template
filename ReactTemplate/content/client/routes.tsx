@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './views/App';
 import Dashboard from './views/Dashboard';
 import FormPage from './views/FormPage';

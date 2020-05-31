@@ -6,6 +6,7 @@
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "jsx": "react",
     "allowJs": true,

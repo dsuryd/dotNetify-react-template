@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import dotnetify, { IDotnetifyVM } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IDotnetifyVM, RouteType } from 'dotnetify';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     fontWeight: 'lighter',
     padding: 10,
     color: 'white',
-    backgroundColor: cyan[600],
-  },
+    backgroundColor: cyan[600]
+  }
 });
 
 export class ActivityModel {
