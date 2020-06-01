@@ -3,18 +3,27 @@ import EditIcon from '@material-ui/icons/create';
 import TextField from '@material-ui/core/TextField';
 import grey from '@material-ui/core/colors/grey';
 
-class InlineEdit extends React.Component {
-  constructor(props) {
+export interface IInlineEditProps {
+  children: React.ReactNode;
+  onChange: (value: string) => void;
+}
+
+class InlineEditState {
+  hover: boolean;
+  edit: boolean;
+  value: string;
+}
+
+export default class InlineEdit extends React.Component<IInlineEditProps, InlineEditState> {
+  state: InlineEditState = new InlineEditState();
+
+  constructor(props: IInlineEditProps) {
     super(props);
-    this.state = {
-      hover: false,
-      edit: false,
-      value: this.props.children
-    };
+    this.state.value = props.children.toString();
   }
   render() {
     let { hover, edit, value } = this.state;
-    const originalValue = this.props.children;
+    const originalValue = this.props.children.toString();
 
     const styles = {
       label: { minHeight: '2em', marginTop: '10px' },
@@ -22,7 +31,7 @@ class InlineEdit extends React.Component {
       editIconHidden: { width: 20, height: 20, fill: 'none', marginLeft: 8 }
     };
 
-    const handleClick = event => {
+    const handleClick = (event: React.MouseEvent) => {
       event.stopPropagation();
       if (!edit) {
         this.setState({ value: originalValue });
@@ -30,7 +39,7 @@ class InlineEdit extends React.Component {
       }
     };
 
-    const handleBlur = event => {
+    const handleBlur = (event: React.FocusEvent) => {
       this.setState({ edit: false });
       if (value.length > 0 && value != originalValue) this.props.onChange(value);
       else this.setState({ value: originalValue });
@@ -38,7 +47,7 @@ class InlineEdit extends React.Component {
 
     const handleMouseEnter = _ => this.setState({ hover: true });
     const handleMouseLeave = _ => this.setState({ hover: false });
-    const setFocus = input => input && input.focus();
+    const setFocus = (input: HTMLInputElement) => input && input.focus();
 
     if (!edit)
       return (
@@ -50,7 +59,7 @@ class InlineEdit extends React.Component {
     else
       return (
         <TextField
-          id="EditField"
+          id='EditField'
           inputRef={input => setFocus(input)}
           value={this.state.value}
           onClick={handleClick}
@@ -60,5 +69,3 @@ class InlineEdit extends React.Component {
       );
   }
 }
-
-export default InlineEdit;

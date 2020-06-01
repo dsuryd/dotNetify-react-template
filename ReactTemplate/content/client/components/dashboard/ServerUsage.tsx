@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -28,17 +27,22 @@ const chartOptions = {
   legend: { display: false },
   tooltips: { enabled: false },
   scales: {
-    xAxes: [ { ticks: { fontcolor: 'white' }, display: true, gridLines: { display: false } } ],
-    yAxes: [ { display: false } ]
+    xAxes: [{ ticks: { fontColor: 'white' }, display: true, gridLines: { display: false } }],
+    yAxes: [{ display: false }]
   },
   layout: { padding: { bottom: 5 } },
   maintainAspectRatio: false
 };
 
-export default function ServerUsage(props) {
-  const classes = useStyles();
+export interface IServerUsageProps {
+  labels: string[];
+  data: number[];
+}
+
+export default function ServerUsage(props: IServerUsageProps) {
+  const classes = useStyles({});
   const data = {
-    labels: props.label,
+    labels: props.labels,
     datasets: [
       {
         data: props.data,
@@ -59,7 +63,3 @@ export default function ServerUsage(props) {
     </Card>
   );
 }
-
-ServerUsage.propTypes = {
-  data: PropTypes.array
-};

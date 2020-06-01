@@ -1,5 +1,5 @@
 import React from 'react';
-import dotnetify from 'dotnetify';
+import dotnetify, { IDotnetifyVM, RouteType } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -18,26 +18,41 @@ const styles = {
   buttons: {
     marginTop: 30,
     float: 'right'
-  },
+  } as React.CSSProperties,
   textField: {
     marginTop: 20
   },
   saveButton: { marginLeft: 5 }
 };
 
-class FormPage extends React.Component {
-  constructor(props) {
+class EmployeeModel {
+  Id: string;
+  Name: string;
+  Route: RouteType;
+}
+
+class FormPageModel {
+  Employees: EmployeeModel[] = [];
+  Id: string;
+  FirstName: string = '';
+  LastName: string = '';
+}
+
+class FormPageState extends FormPageModel {
+  dirty: boolean;
+}
+
+export default class FormPage extends React.Component<any, FormPageState> {
+  state: FormPageState = new FormPageState();
+  vm: IDotnetifyVM;
+  dispatch: (state: any) => void;
+  routeTo: (route: RouteType) => void;
+
+  constructor(props: any) {
     super(props);
     this.vm = dotnetify.react.connect('Form', this);
     this.dispatch = state => this.vm.$dispatch(state);
     this.routeTo = route => this.vm.$routeTo(route);
-
-    this.state = {
-      dirty: false,
-      Employees: [],
-      FirstName: '',
-      LastName: ''
-    };
   }
 
   componentWillUnmount() {
@@ -47,7 +62,7 @@ class FormPage extends React.Component {
   render() {
     let { dirty, Employees, Id, FirstName, LastName } = this.state;
 
-    const handleSelectChange = e => this.routeTo(Employees.find(i => i.Id == e.target.value).Route);
+    const handleSelectChange = (e: React.ChangeEvent<any>) => this.routeTo(Employees.find(i => i.Id == e.target.value).Route);
 
     const handleCancel = _ => {
       this.dispatch({ Cancel: Id });
@@ -61,13 +76,13 @@ class FormPage extends React.Component {
 
     return (
       <ThemeProvider theme={defaultTheme}>
-        <BasePage title="Form Page" navigation="Application / Form Page">
+        <BasePage title='Form Page' navigation='Application / Form Page'>
           <form>
-            <InputLabel id="select-label" style={styles.selectLabel}>
+            <InputLabel id='select-label' style={styles.selectLabel}>
               Select to edit
             </InputLabel>
             {Id && (
-              <Select labelId="select-label" value={Id} onChange={handleSelectChange}>
+              <Select labelId='select-label' value={Id} onChange={handleSelectChange}>
                 {Employees.map(item => (
                   <MenuItem key={item.Id} value={item.Id}>
                     {item.Name}
@@ -78,7 +93,7 @@ class FormPage extends React.Component {
 
             <TextField
               style={styles.textField}
-              label="First Name"
+              label='First Name'
               fullWidth={true}
               value={FirstName}
               onChange={event => this.setState({ FirstName: event.target.value, dirty: true })}
@@ -86,17 +101,17 @@ class FormPage extends React.Component {
 
             <TextField
               style={styles.textField}
-              label="Last Name"
+              label='Last Name'
               fullWidth={true}
               value={LastName}
               onChange={event => this.setState({ LastName: event.target.value, dirty: true })}
             />
 
             <div style={styles.buttons}>
-              <Button variant="contained" onClick={handleCancel} disabled={!dirty}>
+              <Button variant='contained' onClick={handleCancel} disabled={!dirty}>
                 Cancel
               </Button>
-              <Button variant="contained" onClick={handleSave} disabled={!dirty} style={styles.saveButton} color="primary">
+              <Button variant='contained' onClick={handleSave} disabled={!dirty} style={styles.saveButton} color='primary'>
                 Save
               </Button>
             </div>
@@ -106,5 +121,3 @@ class FormPage extends React.Component {
     );
   }
 }
-
-export default FormPage;

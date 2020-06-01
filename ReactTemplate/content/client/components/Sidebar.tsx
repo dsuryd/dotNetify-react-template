@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { RouteLink } from 'dotnetify';
+import { RouteLink, IDotnetifyVM } from 'dotnetify';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Avatar from '@material-ui/core/Avatar';
@@ -58,14 +57,21 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Sidebar(props) {
-  let { vm, logoTitle, open, userAvatarUrl, menus } = props;
-  const classes = useStyles();
+export interface ISidebarProps {
+  vm: IDotnetifyVM;
+  logoTitle: string;
+  open: boolean;
+  userName: string;
+  userAvatarUrl: string;
+  menus: any[];
+}
+
+export default function Sidebar({ vm, logoTitle, open, userName, userAvatarUrl, menus }: ISidebarProps) {
+  const classes = useStyles({});
 
   return (
     <Drawer
-      variant="persistent"
-      className={classes.drawer}
+      variant='persistent'
       open={open}
       classes={{
         paper: classes.drawerPaper
@@ -73,8 +79,8 @@ export default function Sidebar(props) {
     >
       <div className={classes.logo}>{logoTitle}</div>
       <div className={classes.avatarBox}>
-        <Avatar src={userAvatarUrl} size={50} className={classes.avatarIcon} />
-        <span className={classes.avatarName}>{props.username}</span>
+        <Avatar src={userAvatarUrl} className={classes.avatarIcon} />
+        <span className={classes.avatarName}>{userName}</span>
       </div>
       <List>
         {menus.map((menu, index) => (
@@ -91,10 +97,3 @@ export default function Sidebar(props) {
     </Drawer>
   );
 }
-
-Sidebar.propTypes = {
-  sidebarOpen: PropTypes.bool,
-  menus: PropTypes.array,
-  username: PropTypes.string,
-  userAvatarUrl: PropTypes.string
-};

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -33,12 +32,16 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Header(props) {
-  const [ anchorEl, setAnchorEl ] = React.useState(null);
-  const { styles, onSidebarToggle } = props;
-  const classes = useStyles();
+export interface IHeaderProps {
+  styles: React.CSSProperties;
+  onSidebarToggle: (event: React.MouseEvent) => void;
+}
 
-  const handleIconClick = event => setAnchorEl(event.currentTarget);
+export default function Header({ styles, onSidebarToggle }: IHeaderProps) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles({});
+
+  const handleIconClick = (event: React.MouseEvent) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
   const handleMenuClick = () => auth.signOut();
 
@@ -46,12 +49,12 @@ export default function Header(props) {
     <div className={classes.root}>
       <AppBar style={styles} className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={onSidebarToggle}>
+          <IconButton edge='start' className={classes.menuButton} color='inherit' onClick={onSidebarToggle}>
             <MenuIcon />
           </IconButton>
           <h5 className={classes.title} />
           <div>
-            <IconButton onClick={handleIconClick} color="inherit">
+            <IconButton onClick={handleIconClick} color='inherit'>
               <MoreVertIcon />
             </IconButton>
             <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={handleMenuClose}>
@@ -63,8 +66,3 @@ export default function Header(props) {
     </div>
   );
 }
-
-Header.propTypes = {
-  styles: PropTypes.object,
-  onSidebarToggle: PropTypes.func
-};

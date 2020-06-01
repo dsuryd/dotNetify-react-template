@@ -1,5 +1,5 @@
 import React from 'react';
-import dotnetify from 'dotnetify';
+import dotnetify, { IDotnetifyVM } from 'dotnetify';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -28,18 +28,33 @@ const styles = {
   pagination: { marginTop: '1em' }
 };
 
-export default class TablePage extends React.Component {
-  constructor(props) {
+class EmployeeModel {
+  Id: string;
+  FirstName: string;
+  LastName: string;
+}
+
+class TablePageModel {
+  Employees: EmployeeModel[] = [];
+  Pages: number[] = [];
+  SelectedPage: number;
+  ShowNotification: boolean;
+  Add: string;
+}
+
+class TablePageState extends TablePageModel {
+  addName: string = '';
+}
+
+export default class TablePage extends React.Component<any, TablePageState> {
+  state: TablePageState = new TablePageState();
+  vm: IDotnetifyVM;
+  dispatch: (state: any) => void;
+
+  constructor(props: any) {
     super(props);
     this.vm = dotnetify.react.connect('Table', this);
     this.dispatch = state => this.vm.$dispatch(state);
-
-    this.state = {
-      addName: '',
-      Employees: [],
-      Pages: [],
-      ShowNotification: false
-    };
   }
 
   componentWillUnmount() {
@@ -49,20 +64,20 @@ export default class TablePage extends React.Component {
   render() {
     let { addName, Employees, Pages, SelectedPage, ShowNotification } = this.state;
 
-    const handleAdd = _ => {
+    const handleAdd = () => {
       if (addName) {
         this.dispatch({ Add: addName });
         this.setState({ addName: '' });
       }
     };
 
-    const handleUpdate = employee => {
+    const handleUpdate = (employee: { Id: string; FirstName?: string; LastName?: string }) => {
       let newState = Employees.map(item => (item.Id === employee.Id ? Object.assign(item, employee) : item));
       this.setState({ Employees: newState });
       this.dispatch({ Update: employee });
     };
 
-    const handleSelectPage = page => {
+    const handleSelectPage = (page: number) => {
       const newState = { SelectedPage: page };
       this.setState(newState);
       this.dispatch(newState);
@@ -72,16 +87,16 @@ export default class TablePage extends React.Component {
 
     return (
       <ThemeProvider theme={defaultTheme}>
-        <BasePage title="Table Page" navigation="Application / Table Page">
+        <BasePage title='Table Page' navigation='Application / Table Page'>
           <div>
             <div>
-              <Fab onClick={handleAdd} style={styles.addButton} color="secondary">
+              <Fab onClick={handleAdd} style={styles.addButton} color='secondary'>
                 <AddIcon />
               </Fab>
               <TextField
-                id="AddName"
-                label="Add"
-                helperText="Type full name here"
+                id='AddName'
+                label='Add'
+                helperText='Type full name here'
                 value={addName}
                 onKeyPress={event => (event.key === 'Enter' ? handleAdd() : null)}
                 onChange={event => this.setState({ addName: event.target.value })}
@@ -119,7 +134,7 @@ export default class TablePage extends React.Component {
 
             <Pagination style={styles.pagination} pages={Pages} select={SelectedPage} onSelect={handleSelectPage} />
 
-            <Snackbar open={ShowNotification} message="Changes saved" autoHideDuration={1000} onClose={hideNotification} />
+            <Snackbar open={ShowNotification} message='Changes saved' autoHideDuration={1000} onClose={hideNotification} />
           </div>
         </BasePage>
       </ThemeProvider>

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -24,13 +23,17 @@ const useStyles = makeStyles({
 
 const chartOptions = {
   legend: { display: false },
-  scales: { xAxes: [ { display: false } ], yAxes: [ { display: false } ] },
+  scales: { xAxes: [{ display: false }], yAxes: [{ display: false }] },
   layout: { padding: { left: 5, right: 5, top: 5, bottom: 5 } },
   maintainAspectRatio: false
 };
 
-export default function Traffic(props) {
-  const classes = useStyles();
+export interface ITrafficProps {
+  data: number[];
+}
+
+export default function Traffic(props: ITrafficProps) {
+  const classes = useStyles({});
   const data = {
     labels: new Array(props.data.length),
     datasets: [
@@ -55,7 +58,3 @@ export default function Traffic(props) {
     </Card>
   );
 }
-
-Traffic.propTypes = {
-  data: PropTypes.array
-};

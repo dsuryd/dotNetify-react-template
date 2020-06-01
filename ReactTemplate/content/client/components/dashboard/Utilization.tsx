@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -44,14 +43,19 @@ const chartOptions = {
   maintainAspectRatio: false
 };
 
-export default function Utilization(props) {
-  const classes = useStyles();
+export interface IUtilizationProps {
+  labels: string[];
+  data: number[];
+}
+
+export default function Utilization(props: IUtilizationProps) {
+  const classes = useStyles({});
   const data = {
-    labels: props.label,
+    labels: props.labels,
     datasets: [
       {
         data: props.data,
-        backgroundColor: [ cyan[600], pink[600], purple[600] ]
+        backgroundColor: [cyan[600], pink[600], purple[600]]
       }
     ]
   };
@@ -59,17 +63,17 @@ export default function Utilization(props) {
   return (
     <Card className={classes.card}>
       <span style={globalStyles.title}>Utilization</span>
-      <div className="row">
-        <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <div className='row'>
+        <div className='col-xs-12 col-sm-8 col-md-8 col-lg-8'>
           <div className={classes.pieChartArea}>
             <Doughnut data={data} options={chartOptions} />
           </div>
         </div>
-        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div className='col-xs-12 col-sm-4 col-md-4 col-lg-4'>
           <div className={classes.legend}>
             <List>
-              {props.label.map((item, idx) => (
-                <ListItem key={item} alignItems="flex-start">
+              {props.labels.map((item, idx) => (
+                <ListItem key={item} alignItems='flex-start'>
                   <ListItemAvatar>
                     <Avatar style={{ backgroundColor: labelStyles[idx].color }}>{labelStyles[idx].icon}</Avatar>
                   </ListItemAvatar>
@@ -85,7 +89,3 @@ export default function Utilization(props) {
     </Card>
   );
 }
-
-Utilization.propTypes = {
-  data: PropTypes.array
-};

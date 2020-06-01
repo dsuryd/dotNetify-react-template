@@ -1,4 +1,6 @@
-const styles = {
+import React from 'react';
+
+const styles: { [name: string]: React.CSSProperties } = {
   navigation: {
     fontSize: 15,
     fontWeight: 'lighter',
