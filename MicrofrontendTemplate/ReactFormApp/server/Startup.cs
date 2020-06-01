@@ -1,4 +1,8 @@
-﻿using DotNetify;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using DotNetify;
 using DotNetify.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,12 +10,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Shared;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
 
 namespace ReactFormApp
 {
@@ -32,25 +33,27 @@ namespace ReactFormApp
          services.AddDotNetify();
          services.AddResponseCompression();
 
+         services.AddHttpClient();
          services.AddScoped<ICustomerRepository, CustomerRepository>();
       }
 
-      public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
       {
          app.UseCors(builder => builder
           .AllowAnyMethod()
           .AllowAnyHeader()
-          .AllowAnyOrigin()
+          .SetIsOriginAllowed(_ => true)
           .AllowCredentials());
 
-         app.UseWebSockets();
-         app.UseSignalR(routes => routes.MapDotNetifyHub());
+         app.UseRouting();
+         app.UseEndpoints(endpoints => endpoints.MapHub<DotNetifyHub>("/dotnetify"));
          app.UseDotNetify(config =>
          {
             if (env.IsProduction())
             {
                IEnumerable<SecurityKey> keys;
-               using (var client = HttpClientFactory.Create())
+               var httpClientFactory = app.ApplicationServices.GetRequiredService<IHttpClientFactory>();
+               using (var client = httpClientFactory.CreateClient())
                {
                   var identityServerSettings = _config.GetSection(IdentityServerSettings.SectionName).Get<IdentityServerSettings>();
                   keys = IdentityServerClient.GetIssuerSigningKeysAsync(client, identityServerSettings).GetAwaiter().GetResult();
@@ -76,11 +79,13 @@ namespace ReactFormApp
 
          if (env.IsDevelopment())
          {
+#pragma warning disable 618
             app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
             {
                HotModuleReplacement = true,
                HotModuleReplacementClientOptions = new Dictionary<string, string> { { "reload", "true" } },
             });
+#pragma warning restore
          }
 
          app.UseResponseCompression();

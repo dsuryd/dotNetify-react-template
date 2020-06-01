@@ -17,6 +17,6 @@ This is a full React SPA template for ASP.NET Core featuring:
 
 ### Micro-Frontend Template
 
-Micro-frontend reference implementation.
+Reference implementation of micro-frontend [as described here](https://dotnetify.net/core/mfe).
 
 

@@ -18,7 +18,7 @@
     ]
   },
   "dependencies": {
-    "dotnetify": "file:../local/dotnetify-3.5.0-rc.tgz",
+    "dotnetify": "^4.0.0",
     "dotnetify-elements": "^1.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
