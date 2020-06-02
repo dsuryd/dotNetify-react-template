@@ -1,4 +1,4 @@
-import { createWebComponent } from 'dotnetify-elements/web-components/core';
+import { createWebComponent } from 'dotnetify-elements/web-components/Core';
 import loader from './loader';
 import App from './components/App';
 
@@ -36,7 +36,7 @@ loader(
     }
   ],
   // External dependencies from script tags.
-  [ 'dotnetify', 'dotNetifyElements', 'styled' ]
+  ['dotnetify', 'dotNetifyElements', 'styled']
 );
 
 createWebComponent(App, 'my-portal');
