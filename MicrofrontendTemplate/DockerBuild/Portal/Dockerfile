@@ -17,4 +17,5 @@ COPY --from=build /app .
 ARG aspnetenv=Production
 
 ENV ASPNETCORE_ENVIRONMENT ${aspnetenv}
+ENV ASPNETCORE_URLS http://*:$PORT
 ENTRYPOINT ["dotnet", "Portal.dll"]
