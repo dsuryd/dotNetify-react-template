@@ -1,0 +1,10 @@
+.vssscc
+.vspscc
+.log
+.user
+\obj\
+\bin\
+\Properties\
+\node_modules\
+\coverage\
+\wwwroot\dist\
