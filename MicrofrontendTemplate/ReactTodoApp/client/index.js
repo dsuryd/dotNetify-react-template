@@ -1,4 +1,4 @@
-import { createWebComponent } from 'dotnetify-elements/web-components/core';
+import { createWebComponent } from 'dotnetify-elements/web-components/Core';
 import TodoList from './components/TodoList';
 
 const elementName = 'react-todo-app';

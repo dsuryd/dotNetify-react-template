@@ -1,4 +1,4 @@
-import { createWebComponent } from 'dotnetify-elements/web-components/core';
+import { createWebComponent } from 'dotnetify-elements/web-components/Core';
 import Form from './components/Form';
 
 const elementName = 'react-form-app';
