@@ -52,9 +52,11 @@ export default function ServerUsage(props: IServerUsageProps) {
     ]
   };
 
+  const titleStyle = { ...globalStyles.title }
+
   return (
     <Card className={classes.card}>
-      <div className={classes.header} style={{ ...globalStyles.title }}>
+      <div className={classes.header} style={titleStyle}>
         Server Usage
       </div>
       <div className={classes.body}>

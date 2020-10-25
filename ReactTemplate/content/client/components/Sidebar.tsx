@@ -68,14 +68,13 @@ export interface ISidebarProps {
 
 export default function Sidebar({ vm, logoTitle, open, userName, userAvatarUrl, menus }: ISidebarProps) {
   const classes = useStyles({});
+  const drawerClasses = {paper: classes.drawerPaper}
 
   return (
     <Drawer
       variant='persistent'
       open={open}
-      classes={{
-        paper: classes.drawerPaper
-      }}
+      classes={drawerClasses}
     >
       <div className={classes.logo}>{logoTitle}</div>
       <div className={classes.avatarBox}>

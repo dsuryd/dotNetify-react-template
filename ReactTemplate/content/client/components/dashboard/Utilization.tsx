@@ -60,6 +60,8 @@ export default function Utilization(props: IUtilizationProps) {
     ]
   };
 
+  const avatarStyle = (idx: number) => ({ backgroundColor: labelStyles[idx].color })
+
   return (
     <Card className={classes.card}>
       <span style={globalStyles.title}>Utilization</span>
@@ -75,7 +77,7 @@ export default function Utilization(props: IUtilizationProps) {
               {props.labels.map((item, idx) => (
                 <ListItem key={item} alignItems='flex-start'>
                   <ListItemAvatar>
-                    <Avatar style={{ backgroundColor: labelStyles[idx].color }}>{labelStyles[idx].icon}</Avatar>
+                    <Avatar style={avatarStyle(idx)}>{labelStyles[idx].icon}</Avatar>
                   </ListItemAvatar>
                   <ListItemText>
                     <span className={classes.legendText}>{item}</span>
