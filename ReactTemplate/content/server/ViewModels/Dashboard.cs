@@ -6,7 +6,7 @@ using DotNetify;
 using DotNetify.Routing;
 using DotNetify.Security;
 
-namespace dotnetify_react_template
+namespace projectName
 {
    [Authorize]
    public class Dashboard : BaseVM, IRoutable

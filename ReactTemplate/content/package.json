@@ -1,6 +1,6 @@
 {
   "version": "5.0.0",
-  "name": "dotnetify_react_template__lower",
+  "name": "projectName__lower",
   "private": true,
   "scripts": {
     "build": "webpack",

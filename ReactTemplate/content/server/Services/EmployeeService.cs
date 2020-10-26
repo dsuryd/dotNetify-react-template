@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace dotnetify_react_template
+namespace projectName
 {
    public interface IEmployeeService
    {

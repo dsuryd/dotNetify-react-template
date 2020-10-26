@@ -4,7 +4,7 @@ using System.Linq;
 using DotNetify;
 using DotNetify.Security;
 
-namespace dotnetify_react_template
+namespace projectName
 {
    [Authorize]
    public class Table : BaseVM

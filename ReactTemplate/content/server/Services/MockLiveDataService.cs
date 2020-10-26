@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 
-namespace dotnetify_react_template
+namespace projectName
 {
    public interface ILiveDataService
    {
