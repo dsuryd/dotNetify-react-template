@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BrunoLau.SpaServices.Webpack;
 using DotNetify;
 using DotNetify.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
@@ -49,15 +49,7 @@ namespace projectName
          });
 
          if (env.IsDevelopment())
-         {
-#pragma warning disable CS0618
-            app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-            {
-               HotModuleReplacement = true,
-               HotModuleReplacementClientOptions = new Dictionary<string, string> { { "reload", "true" } },
-            });
-#pragma warning restore CS0618
-         }
+            app.UseWebpackDevMiddlewareEx(new WebpackDevMiddlewareOptions { HotModuleReplacement = true });
 
          app.UseFileServer();
          app.UseRouting();
