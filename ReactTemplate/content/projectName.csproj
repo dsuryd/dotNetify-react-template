@@ -8,7 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BrunoLau.SpaServices" Version="0.8.0" />
-    <PackageReference Include="DotNetify.SignalR" Version="5.0.0" />
+    <PackageReference Include="DotNetify.SignalR" Version="5.1.0" />
     <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0" />    
   </ItemGroup>
