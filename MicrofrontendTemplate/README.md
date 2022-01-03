@@ -1,4 +1,4 @@
-<p align="center"><img width="400px" src="https://dotnetify.net/content/images/dotnetify-logo.png"></p>
+<p align="center"><img width="300px" src="https://dotnetify.net/content/images/dotnetify-logo.png"></p>
 
 ## DotNetify - Micro-Frontend Demo
 
