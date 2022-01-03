@@ -1,17 +1,17 @@
-import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import { Memory, SimCard, NetworkWifi } from '@material-ui/icons';
-import cyan from '@material-ui/core/colors/cyan';
-import pink from '@material-ui/core/colors/pink';
-import purple from '@material-ui/core/colors/purple';
-import globalStyles from '../../styles/styles';
+import React from "react";
+import { Doughnut } from "react-chartjs-2";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import Avatar from "@material-ui/core/Avatar";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import { Memory, SimCard, NetworkWifi } from "@material-ui/icons";
+import cyan from "@material-ui/core/colors/cyan";
+import pink from "@material-ui/core/colors/pink";
+import purple from "@material-ui/core/colors/purple";
+import globalStyles from "../../styles/styles";
 
 const useStyles = makeStyles({
   card: {
@@ -23,11 +23,11 @@ const useStyles = makeStyles({
     paddingTop: 60
   },
   legendText: {
-    fontSize: '12px'
+    fontSize: "12px"
   },
   pieChartArea: {
     height: 290,
-    textAlign: 'center'
+    textAlign: "center"
   }
 });
 
@@ -60,22 +60,22 @@ export default function Utilization(props: IUtilizationProps) {
     ]
   };
 
-  const avatarStyle = (idx: number) => ({ backgroundColor: labelStyles[idx].color })
+  const avatarStyle = (idx: number) => ({ backgroundColor: labelStyles[idx].color });
 
   return (
     <Card className={classes.card}>
       <span style={globalStyles.title}>Utilization</span>
-      <div className='row'>
-        <div className='col-xs-12 col-sm-8 col-md-8 col-lg-8'>
+      <div className="row">
+        <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
           <div className={classes.pieChartArea}>
             <Doughnut data={data} options={chartOptions} />
           </div>
         </div>
-        <div className='col-xs-12 col-sm-4 col-md-4 col-lg-4'>
+        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
           <div className={classes.legend}>
             <List>
               {props.labels.map((item, idx) => (
-                <ListItem key={item} alignItems='flex-start'>
+                <ListItem key={item} alignItems="flex-start">
                   <ListItemAvatar>
                     <Avatar style={avatarStyle(idx)}>{labelStyles[idx].icon}</Avatar>
                   </ListItemAvatar>

@@ -1,39 +1,39 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import grey from '@material-ui/core/colors/grey';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import grey from "@material-ui/core/colors/grey";
 
 const useStyles = makeStyles({
   content: {
-    padding: '5px 10px',
+    padding: "5px 10px",
     marginLeft: 90,
     height: 80
   },
   number: {
-    display: 'block',
-    fontWeight: 'bold',
+    display: "block",
+    fontWeight: "bold",
     fontSize: 18,
     paddingTop: 10,
     color: grey[800]
   },
   text: {
     fontSize: 18,
-    fontWeight: 'lighter',
+    fontWeight: "lighter",
     color: grey[600]
   },
   iconBox: {
-    float: 'left',
+    float: "left",
     height: 90,
     width: 90,
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
     backgroundColor: (props: any) => props.color
   },
   icon: {
     height: 48,
     width: 48,
     marginTop: 20,
-    maxWidth: '100%'
+    maxWidth: "100%"
   }
 });
 
