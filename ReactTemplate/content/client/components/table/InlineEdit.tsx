@@ -1,5 +1,5 @@
 import React from 'react';
-import EditIcon from '@material-ui/icons/create';
+import EditIcon from '@material-ui/icons/Create';
 import TextField from '@material-ui/core/TextField';
 import grey from '@material-ui/core/colors/grey';
 
